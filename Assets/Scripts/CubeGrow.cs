@@ -35,7 +35,7 @@ public class CubeGrow : MonoBehaviour
         else if (CubeParent.time > 60 && CubeParent.time < 80)
         {
             float hue = 1f;
-            Color color = Color.HSVToRGB(hue, Mathf.Cos(AudioSystem.audioAmp / 10f), 2f + Mathf.Cos(time)); 
+            Color color = Color.HSVToRGB(hue, Mathf.Cos(AudioSystem.audioAmp / 10f), 1.5f + Mathf.Cos(time)); 
             cubeRenderer.material.color = color;
         }
         else
@@ -43,7 +43,7 @@ public class CubeGrow : MonoBehaviour
             for (int i = 0; i < 100; i++)
             {
                 float hue = (float) i / 100;
-                Color color = Color.HSVToRGB(Mathf.Abs(hue * Mathf.Cos(AudioSystem.audioAmp)), Mathf.Cos(AudioSystem.audioAmp / 10f), 2f + Mathf.Cos(time)); 
+                Color color = Color.HSVToRGB(Mathf.Abs(hue * Mathf.Cos(AudioSystem.audioAmp)), Mathf.Cos(AudioSystem.audioAmp / 10f), 3f + Mathf.Cos(time)); 
                 cubeRenderer.material.color = color;
             }
         }

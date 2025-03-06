@@ -37,7 +37,7 @@ public class CubeFluctuate : MonoBehaviour
         else
         {
             float hue = 1f;
-            Color color = Color.HSVToRGB(Mathf.Abs(hue * Mathf.Cos(time)), Mathf.Cos(AudioSystem.audioAmp / 10f), 2f + Mathf.Cos(time)); 
+            Color color = Color.HSVToRGB(Mathf.Abs(hue * Mathf.Cos(time)), Mathf.Cos(AudioSystem.audioAmp / 10f), 3f + Mathf.Cos(time)); 
             cubeRenderer.material.color = color;
         }
     }
