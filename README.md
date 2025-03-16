@@ -1,4 +1,4 @@
-# IMDM290_Soundscape_Therapy
+# IMDM290 - Soundscape Therapy
 
 ## Team Members: 
 - Danny Mallya
