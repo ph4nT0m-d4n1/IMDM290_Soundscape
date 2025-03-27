@@ -1,30 +1,33 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// Manages the functionality of the <c>Next</c> button in the Soundscape Therapy application.
+/// Allows navigation through initial prompts and specific screens.
+/// </summary>
 public class NextButton : MonoBehaviour
 {
-    Button next;
+    Button next; //button component attached to the gameObject
+
     void Start()
     {
-        next = gameObject.GetComponent<Button>();
-        next.onClick.AddListener(OnClick);
+        next = gameObject.GetComponent<Button>(); // get the button component from the current gameobject
+        next.onClick.AddListener(OnClickNext); //add a click event listener to the button
     }
 
-    void Update()
+    /// <summary>
+    /// Handles the button click event for navigating through prompts.
+    /// Advances to the next prompt for specific screens in the application.
+    /// </summary>
+    public void OnClickNext()
     {
-        if (Prompt.counter >= 6 && Prompt.counter != 7 && Prompt.counter != 14)
-        {
-            gameObject.SetActive(false);
-        }
-    } 
-
-    public void OnClick()
-    {
+        // only allow advancing during initial instructions, final screens, and specific intermediate screens
+        // conditions match those in the Prompt script's NextPrompt method
+       
         if (Prompt.counter < 6 || Prompt.counter == 14 || Prompt.counter == 7)
         {
             Prompt.counter += 1;
-            Prompt.prompt_text.text = Prompt.prompts[Prompt.counter];
-            Debug.Log(Prompt.counter);
+            Prompt.UpdatePromptText();
         }
     }
 }
