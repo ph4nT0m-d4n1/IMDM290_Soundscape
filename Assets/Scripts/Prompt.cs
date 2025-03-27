@@ -3,21 +3,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class Prompt : MonoBehaviour
 {
+    // all debug statements are for testing, ignore them lol
     [HideInInspector] public static int counter; //initializing a counter for the prompts
-    TMP_Text prompt_text; //the text object
+    public static TMP_Text prompt_text; //the text object
 
     //initializing prompts in an array
-    string [] prompts = {
-        "Hello, welcome to Soundscape Therapy",
-        "Please answer each question to the best of your ability on a scale of 1 - 10",
-        "Use the options on the screen or the number row on your keyboard",
-        "The number 0 will be used for the value of 10",
-        "When you are ready, we will begin.",
-        "Feel free to use the F key to skip any questions!",
+    public static string [] prompts = {
+        "Hello, welcome to Soundscape Therapy_",
+        "Please answer each question to the best of your ability on a scale of 1 - 10_",
+        "Use the number row on your keyboard to provide responses_",
+        "The number 0 will be used for the value of 10_",
+        "When you are ready, we will begin_",
+        "Feel free to use the F key to skip any questions_",
         "How are you feeling today?",
         "Let's explore further",
         "Tell me about your happiness today... how would you quantify your happiness?",
@@ -52,7 +52,7 @@ public class Prompt : MonoBehaviour
         AnswerQuestion();
     }
     
-    void NextPrompt()
+    public static void NextPrompt()
     {
         if (counter < 6 || counter == 14 || counter == 7)
         {
@@ -103,8 +103,7 @@ public class Prompt : MonoBehaviour
     {
         if (counter >= 6 && counter != 7 && counter != 14 && counter < prompts.Length && responses.Count < 8)
         {
-            // Use a switch statement or a dictionary to map key codes to values
-            for (int i = 1; i <= 2; i++) // Modify this range as needed
+            for (int i = 1; i <= 9; i++)
             {
                 KeyCode keyCode = (KeyCode)Enum.Parse(typeof(KeyCode), $"Alpha{i}");
                 
@@ -117,12 +116,11 @@ public class Prompt : MonoBehaviour
                     Debug.Log(counter);
                     Debug.Log("Responses: " + string.Join(",", responses));
                     
-                    break; // Exit loop after processing a key press
+                    break; // exit loop after hitting a key
                 }
             }
 
-            // Special handling for 0 key (representing 10)
-            if (Input.GetKeyDown(KeyCode.Alpha0))
+            if (Input.GetKeyDown(KeyCode.Alpha0)) //special handling for 0 to represent 10
             {
                 responses.Add(10);
                 counter += 1;
