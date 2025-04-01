@@ -15,9 +15,10 @@ public class Receiver : MonoBehaviour
         {
             receiver = gameObject.AddComponent<OSCReceiver>();
         }
+
+        Debug.Log($"OSC Receiver started on port {receiver.LocalPort} listening to address {address}");
         receiver.LocalPort = 9000;
         receiver.Bind(address, MessageReceived);
-        Debug.Log($"OSC Receiver started on port {receiver.LocalPort} listening to address {address}");
     }
 
     void MessageReceived(OSCMessage message)
