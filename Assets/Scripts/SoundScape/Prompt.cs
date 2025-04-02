@@ -40,7 +40,7 @@ public class Prompt : MonoBehaviour
 
     static List<int> responses = new List<int>(); //list to store user responses
 
-    bool skip; //indicates whether the current question is being skipped
+    static bool skip; //indicates whether the current question is being skipped
 
     public GameObject nextButton; //reerence to the next button in the UI
 
@@ -99,7 +99,7 @@ public class Prompt : MonoBehaviour
     /// Handles navigation to the next prompt during instruction screens.
     /// Advances to the next prompt when spacebar is pressed.
     /// </summary>
-    void NextPrompt()
+    static void NextPrompt()
     {
         // Only allow advancing during specific prompts (initial instructions, final prompts)
         if (counter < 6 || counter == 14 || counter == 7)
@@ -117,7 +117,7 @@ public class Prompt : MonoBehaviour
     /// Manages the question skipping mechanism.
     /// Allows users to skip a question by pressing 'F' and confirming.
     /// </summary>
-    void SkipQuestion()
+    static void SkipQuestion()
     {
         if (Input.GetKeyDown(KeyCode.F)) // initiate skip process when 'F' is pressed
         {
@@ -146,7 +146,7 @@ public class Prompt : MonoBehaviour
     /// Handles user responses to interactive questions.
     /// Captures numeric key inputs (1-9) with special handling for 0 (representing 10).
     /// </summary>
-    void AnswerQuestion()
+    static void AnswerQuestion()
     {
         // Check for number key inputs (1-9)
         for (int i = 1; i <= 9; i++)

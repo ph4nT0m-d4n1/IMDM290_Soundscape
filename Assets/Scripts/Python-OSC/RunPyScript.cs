@@ -35,7 +35,7 @@ public class RunPyScript : MonoBehaviour
         senderPy.FileName = pythonPath;                // set the executable to our Python interpreter
         senderPy.Arguments = scriptPath;               // pass the script path as an argument
         senderPy.UseShellExecute = false;              // don't use the OS shell to start the process
-        senderPy.CreateNoWindow = false;                // run without creating a console window
+        senderPy.CreateNoWindow = true;                // run without creating a console window
         senderPy.RedirectStandardOutput = true;        // capture the standard output
         senderPy.RedirectStandardError = true;         // capture the error output
 
