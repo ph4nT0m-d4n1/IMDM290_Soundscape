@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 1380417999}
   - component: {fileID: 1380418000}
   m_Layer: 0
-  m_Name: Script
+  m_Name: Script Runner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -539,6 +539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35b90893bd69ef4f93ca1e2d9ef03b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pythonPath: c:/Users/danny/AppData/Local/Programs/Python/Python313/python.exe
+  scriptPath: c:/Users/danny/uproj/IMDM290_Soundscape/Assets/Scripts/Python-OSC/sender.py
 --- !u!1 &1504570904
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +830,6 @@ SceneRoots:
   - {fileID: 949969891}
   - {fileID: 387194671}
   - {fileID: 1200931135}
-  - {fileID: 1841120621}
   - {fileID: 1504570906}
   - {fileID: 1380417998}
+  - {fileID: 1841120621}

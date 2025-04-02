@@ -1,15 +1,21 @@
+"""
+A simple Python OSC client
+
+"""
 import time
 import random
 from pythonosc import udp_client
 
-IP = "127.0.0.1"
-SEND_PORT = 9000
+#127.0.0.1 is the IP reference to the local host, aka your device
+
+IP = "127.0.0.1" #make sure this matches the IP address in the OSC receiver object
+SEND_PORT = 9000 #make sure this matches the LocalPort in Receiver.cs
 
 client = udp_client.SimpleUDPClient(IP, SEND_PORT)
 
-print("Starting OSC sender...")
 
 if __name__ == "__main__":
+    print("Starting OSC sender...")
     for x in range(10):
         num = random.random()
         print(num)
