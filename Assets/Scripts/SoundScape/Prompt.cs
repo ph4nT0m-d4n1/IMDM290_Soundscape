@@ -10,10 +10,20 @@ using UnityEngine.UI;
 /// </summary>
 public class Prompt : MonoBehaviour
 {
-    [HideInInspector] public static int counter; //counter to keep track of the current prompt index
+    #region class variables
+    [SerializeField] GameObject nextButton; //reference to the game object containing the button
 
-    public static TMP_Text prompt_text; //prompt text being displayed
+    public static int counter; //counter to keep track of the current prompt index
+    public static List<int> responses = new List<int>(); //list to store user responses
 
+    static TMP_Text promptText; //prompt text being displayed
+    static bool skip; //indicates whether the current question is being skipped
+    
+
+    #endregion
+
+
+    #region prompt list
     /// <summary>
     /// Array of predefined prompts/instructions for the therapy session.
     /// Includes welcome messages, instructions, and questions.
@@ -38,21 +48,18 @@ public class Prompt : MonoBehaviour
         "Thank you for responding to our survey_",
     };
 
-    static List<int> responses = new List<int>(); //list to store user responses
+    #endregion
 
-    static bool skip; //indicates whether the current question is being skipped
-
-    public GameObject nextButton; //reerence to the next button in the UI
-
+    
     void Start()
     {
-        // reset counter and skip
+        // reset counter and skip values
         counter = 0;
         skip = false;
 
         // initialize prompt system
-        prompt_text = gameObject.GetComponent<TMP_Text>();
-        prompt_text.text = prompts[counter];
+        promptText = GameObject.Find("Prompt Text").GetComponent<TMP_Text>();
+        promptText.text = prompts[counter];
     }
 
     void Update()
@@ -74,6 +81,8 @@ public class Prompt : MonoBehaviour
         }
     }
 
+
+    #region main methods
     /// <summary>
     /// Updates the prompt text based on the current counter.
     /// Handles displaying the current prompt or a final thank you message.
@@ -83,15 +92,14 @@ public class Prompt : MonoBehaviour
         if (counter >= 0 && counter < prompts.Length)
         {
             // Set prompt text and log debug information
-            prompt_text.text = prompts[counter];
-            Debug.Log(counter);
+            promptText.text = prompts[counter];
             Debug.Log("Responses: " + string.Join(",", responses));
         }
-        else
+        else //UNTESTED
         {
             // Display final message when all prompts are completed
-            prompt_text.text = "Please enjoy your soundscape_";
-            Debug.LogWarning("attempted to access prompt outside of array bounds.");
+            promptText.text = "Please enjoy your soundscape_";
+            Debug.LogWarning("Attempted to access prompt outside of array bounds.");
         }
     }
     
@@ -108,7 +116,6 @@ public class Prompt : MonoBehaviour
             {
                 counter += 1;
                 UpdatePromptText();
-                Debug.Log(counter);
             }
         }
     }
@@ -121,7 +128,7 @@ public class Prompt : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F)) // initiate skip process when 'F' is pressed
         {
-            prompt_text.text = "LOL? FR? (Y / N)";
+            promptText.text = "LOL? FR? (Y / N)";
             skip = true;
         }
 
@@ -172,4 +179,6 @@ public class Prompt : MonoBehaviour
             UpdatePromptText();
         }
     }
+
+    #endregion
 }
