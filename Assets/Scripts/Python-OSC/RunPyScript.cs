@@ -10,17 +10,15 @@ using Debug = UnityEngine.Debug;
 public class RunPyScript : MonoBehaviour
 {
     #region global reference variables
-    //private Process OSC_Process; //reference to the Python process
+    public string pythonPath = "Python"; //path to your Python executable. If Python is in your PATH, you can just use "Python" or "python3".
 
-    public string pythonPath = "Python"; // Path to your Python executable. If Python is in your system PATH, you can use just "Python".
+    public string scriptPath = "Assets/Scripts/Python-OSC/sender.py"; //path to the Python script to be executed.
     
-    public string scriptPath = "c:/Users/danny/uproj/IMDM290_Soundscape/Assets/Scripts/Python-OSC/sender.py"; //file path to the Python script to be executed.
-
     #endregion
 
     void Start()
     {
-        _=RunPy(); // discard the task to suppress compiler warning CS4014 (call is not awaited)
+        _ = RunPy(); // discard the task to suppress compiler warning CS4014 (call is not awaited)
     }
 
     /// <summary>
@@ -32,7 +30,7 @@ public class RunPyScript : MonoBehaviour
     {
         // configuring the process startup parameters
         ProcessStartInfo senderPy = new ProcessStartInfo();
-        senderPy.FileName = pythonPath;                // set the executable to our Python interpreter
+        senderPy.FileName = pythonPath;            // set the executable to our Python interpreter
         senderPy.Arguments = scriptPath;               // pass the script path as an argument
         senderPy.UseShellExecute = false;              // don't use the OS shell to start the process
         senderPy.CreateNoWindow = true;                // run without creating a console window
@@ -43,7 +41,7 @@ public class RunPyScript : MonoBehaviour
         {
             // starts the Python process
             Process OSC_Process = Process.Start(senderPy);
-            
+
             if (OSC_Process == null)
             {
                 Debug.LogError("Failed to start the process.");
@@ -53,10 +51,10 @@ public class RunPyScript : MonoBehaviour
             // read output streams asynchronously to avoid deadlocks
             Task<string> outputTask = OSC_Process.StandardOutput.ReadToEndAsync();
             Task<string> errorTask = OSC_Process.StandardError.ReadToEndAsync();
-            
+
             // wait for the process to exit without blocking Unity's main thread
             await Task.Run(() => OSC_Process.WaitForExit());
-            
+
             // retrieve the output and error text
             string output = await outputTask;
             string error = await errorTask;
