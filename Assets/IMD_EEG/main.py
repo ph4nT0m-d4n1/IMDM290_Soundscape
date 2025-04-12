@@ -9,11 +9,14 @@ from emotiv_lsl.emotiv_epoc_x import EmotivEpocX
 import hid
 
 def start_device_stream(device_path):
-    device = EmotivEpocX(device_path=device_path)
-    device.main_loop()
+    try:
+        device = EmotivEpocX(device_path=device_path)
+        device.main_loop()
+    except Exception as e:
+        print(f"Error starting device stream for path {device_path}: {e}")
 
 if __name__ == "__main__":
-    emotiv_devices = [device for device in hid.enumerate() if device['manufacturer_string'] == 'Emotiv' and device['usage'] == 1]
+    emotiv_devices = [device for device in hid.enumerate() if device['manufacturer_string'] == 'Emotiv' and device['usage'] == 2]
 
     threads = []
     for device in emotiv_devices:

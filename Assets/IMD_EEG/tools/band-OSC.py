@@ -25,14 +25,14 @@ freq_bands = OrderedDict(freq_bands)
 
 raw1 = []
 
-def save_raw_data(start_time, raw, idx):
+def save_raw_data(start_time, raw):
     # global result_folder_path
     info = mne.create_info(ch_names=channel_names, sfreq=sampling_rate, ch_types='eeg')
     raw_array = mne.io.RawArray(np.array(raw).T, info)
-    raw_array.save(f'EEG_raw_{idx}.fif', overwrite=True)
+    raw_array.save(f'EEG_raw.fif', overwrite=True)
 
 def cleanup_function():
-    save_raw_data(raw1, 1, 1)
+    save_raw_data(start_time, raw1)
 
 def main():
     atexit.register(cleanup_function)
@@ -84,13 +84,12 @@ def main():
 
 def analyze_data(data_combined, channel_names, start_time):
     complex_signal = analyses.compute_freq_bands(data_combined, sampling_rate, freq_bands)
-    
+          
     client.send_message("/full", get_power(complex_signal[0,:]))
     client.send_message("/gamma", get_power(complex_signal[1,:]))
     client.send_message("/alpha", get_power(complex_signal[2,:]))
     client.send_message("/beta", get_power(complex_signal[3,:]))
-    client.send_message("/Theta", get_power(complex_signal[4,:]))
-
+    client.send_message("/theta", get_power(complex_signal[4,:]))
     
 def get_power(signal):
     return np.sqrt(np.mean(signal ** 2))
