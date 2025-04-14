@@ -11,12 +11,23 @@
 - Unique Sound Environment: Multiple audio layers combine to create a unique soundscape tailored to the user's emotional profile.
 
 ## Dependencies
+- Python 3.12.9
+- Unity Editor 6000.0.25f1
+### Python Packages (install via pip)
 - <a href="https://github.com/attwad/python-osc">Python-OSC (Python Open Sound Control)</a>
+- hypyp
+- mne
+- cryptodome
+- numpy
+- pylsl
+- hidapi
+- pynput
+### Unity Packages
 - <a href="https://github.com/Iam1337/extOSC">ext-OSC (Open Sound Control Protocol for Unity)</a>
   - added to Project Packages via Github URL
 
 
-### Team Members: 
+## Team Members: 
 - Danny Mallya
 - Susie Zhang
 - Maia Lee
