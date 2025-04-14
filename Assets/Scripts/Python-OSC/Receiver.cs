@@ -27,7 +27,6 @@ public class Receiver : MonoBehaviour
     /// Logs incoming and error messages to the console.
     /// </summary>
     /// <param name="message"> the information sent via the Python OSC client </param>
-
     protected void MessageReceived(OSCMessage message)
     {
         if (message.Values.Count > 0)

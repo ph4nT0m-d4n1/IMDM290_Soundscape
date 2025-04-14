@@ -519,13 +519,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380417997}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22aaec16997888646a8d7f6dc9e9a381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   display: {fileID: 2020366564}
-  address: /example/1
+  address: /address
   receiver: {fileID: 1504570905}
 --- !u!114 &1380418000
 MonoBehaviour:
@@ -539,7 +539,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35b90893bd69ef4f93ca1e2d9ef03b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pythonPath: /Library/Frameworks/Python.framework/Versions/3.13/bin/python3
+  pythonPath: C:\Users\danny\AppData\Local\Programs\Python\Python312\python.exe
   scriptPath: Assets/Scripts/Python-OSC/sender.py
 --- !u!1 &1504570904
 GameObject:
@@ -815,7 +815,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2020366562}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22aaec16997888646a8d7f6dc9e9a381, type: 3}
   m_Name: 

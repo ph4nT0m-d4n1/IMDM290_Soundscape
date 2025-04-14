@@ -83,16 +83,30 @@ def main():
 
 
 def analyze_data(data_combined, channel_names, start_time):
-    complex_signal = analyses.compute_freq_bands(data_combined, sampling_rate, freq_bands)
-          
-    client.send_message("/full", get_power(complex_signal[0,:]))
-    client.send_message("/gamma", get_power(complex_signal[1,:]))
-    client.send_message("/alpha", get_power(complex_signal[2,:]))
-    client.send_message("/beta", get_power(complex_signal[3,:]))
-    client.send_message("/theta", get_power(complex_signal[4,:]))
+    dummy_data = np.array([data_combined[0], data_combined[0]]) #using dummy data for a workaround hypyp error
+    
+    complex_signal = analyses.compute_freq_bands(dummy_data, sampling_rate, freq_bands)
+    
+    print("Complex signal shape:", complex_signal.shape)
+    
+    # check if first dimension represents frequency bands or subjects
+    if complex_signal.shape[0] == 2: 
+        # get first subject's data only (since both are identical)
+        subject_data = complex_signal[0]
+        
+       #send each frequency band to the OSC client
+        for i, band_name in enumerate(freq_bands.keys()):
+            if i < subject_data.shape[0]:  #ensuring index is within bounds
+                power = get_power(subject_data[i])
+                client.send_message(f"/{band_name.lower()}", float(power))
+                print(f"Sent {band_name.lower()} power: {power}")
+    else:
+        print("Unexpected data structure from compute_freq_bands")
+        quit()
     
 def get_power(signal):
-    return np.sqrt(np.mean(signal ** 2))
+    magnitudes = np.abs(signal)
+    return float(np.sqrt(np.mean(magnitudes ** 2)))
 
 
 if __name__ == "__main__":

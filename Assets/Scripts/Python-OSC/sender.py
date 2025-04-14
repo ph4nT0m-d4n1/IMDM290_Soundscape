@@ -15,7 +15,7 @@ client = udp_client.SimpleUDPClient(IP, SEND_PORT)
 
 
 if __name__ == "__main__":
-    print("Starting OSC sender...")
+    print("stopping OSC sender...")
     for x in range(5):
         num = random.random()
         print(num)

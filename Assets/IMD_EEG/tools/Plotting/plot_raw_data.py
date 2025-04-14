@@ -6,7 +6,7 @@ matplotlib.use('TkAgg')
 import os
 
 # file_path_1 = "/Users/ngocdinh/Downloads/viz_participant1_raw.fif"
-file_path_1 = "../../data/viz_participant2_raw.fif"
+file_path_1 = "EEG_raw.fif"
 
 # Load the raw EEG file
 raw_1 = mne.io.read_raw_fif(file_path_1, preload=True)
