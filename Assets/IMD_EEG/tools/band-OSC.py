@@ -88,11 +88,10 @@ def analyze_data(data_combined, channel_names, start_time):
     complex_signal = analyses.compute_freq_bands(dummy_data, sampling_rate, freq_bands)
     
     print("Complex signal shape:", complex_signal.shape)
-    
+
     # check if first dimension represents frequency bands or subjects
     if complex_signal.shape[0] == 2: 
-        # get first subject's data only (since both are identical)
-        subject_data = complex_signal[0]
+        subject_data = complex_signal[0] # get one of the data sets (identical in this case)
         
        #send each frequency band to the OSC client
         for i, band_name in enumerate(freq_bands.keys()):
@@ -101,7 +100,7 @@ def analyze_data(data_combined, channel_names, start_time):
                 client.send_message(f"/{band_name.lower()}", float(power))
                 print(f"Sent {band_name.lower()} power: {power}")
     else:
-        print("Unexpected data structure from compute_freq_bands")
+        print("Unexpected data structure. Expected 2D array.")
         quit()
     
 def get_power(signal):
