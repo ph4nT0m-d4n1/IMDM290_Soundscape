@@ -24,10 +24,9 @@ public class NextButton : MonoBehaviour
         // only allow advancing during initial instructions, final screens, and specific intermediate screens
         // conditions match those in the Prompt script's NextPrompt method
        
-        if (Prompt.counter < 6 || Prompt.counter == 14 || Prompt.counter == 7)
+        if (Prompt.counter <= 6 || Prompt.counter >= 17)
         {
-            Prompt.counter += 1;
-            Prompt.UpdatePromptText();
+            Prompt.NextPrompt();
         }
     }
 }

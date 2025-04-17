@@ -19,7 +19,8 @@ public class Prompt : MonoBehaviour
 
     static TMP_Text promptText; //prompt text being displayed
     static bool skip; //indicates whether the current question is being skipped
-    static bool startFade = false; //determines when to run the fadeText animation coroutine in Update()
+    static bool startFade; //determines when to run the fadeText animation coroutine
+    static bool userInput; //determines whether the user can provide input at the moment
 
     #endregion
 
@@ -30,34 +31,44 @@ public class Prompt : MonoBehaviour
     /// Includes welcome messages, instructions, and questions.
     /// </summary>
     public static string[] prompts = {
-        "Hello, welcome to Soundscape Therapy_",
-        "Please answer each question to the best of your ability on a scale of 1 - 10_",
-        "Use the number row on your keyboard to provide responses_",
-        "The number 0 will be used for the value of 10_",
-        "When you are ready, we will begin_",
-        "Feel free to use the F key to skip any questions_",
-        "How are you feeling today?",
-        "Let's explore further",
-        "Tell me about your happiness today... how would you quantify your happiness?",
-        "How content are you in this current moment?",
-        "Are you frustrated in this current moment?",
-        "How anxious are you?",
-        "How tired are you?",
-        "a secret ninth question about the cheesiest bread", //placeholder?
-        "Perhaps you are currently feeling a sense of peace after this experience...",
-        "Please take a moment to reflect on your state of mind and rate this emotion accordingly...",
-        "Thank you for responding to our survey_",
+        "Hello_", //0
+        "Welcome to your Soundscape therapy session_", //1
+        "Please answer each question to the best of your ability on a scale of 1 - 10_", //2
+        "Use the number row on your keyboard to provide responses_", //3
+        "The number 0 will be used for the value of 10_", //4
+        "The F Key will be used to skip questions_", //5
+        "When you are ready, we will begin_", //6
+
+        "How clear is your mind at this moment?_", //Q1 - Vinyl SFX
+        "Have you fully woken up today?_", //Q2 - Pluck
+        "Do you feel a sense of relaxation?_", //Q3 - Pad
+        "Is your mind racing at this moment?_", //Q4 - Lead
+        "How comfortable are you right now?_", //Q5 - Bass
+        "Are you enjoying the weather today?_", //Q6 - SFX2
+        "Do you think your day will get better?_", //Q7 - Arp
+        "How long since you last spoke to your family?_", //Q8 - Main Lead
+        "Have you been feeling loved recently?_", //Q9 - Vocal Chop
+        "Do you love yourself?_", //Q10 - Drums
+        
+        "I'm glad you stayed_", //17
+        "Enjoy this moment while it's here_", //18
+        "Enjoy the sound and sight of You_" //19
     };
 
     #endregion
 
-    
-    void Start()
+    void Awake()
     {
         // reset counter and skip values
         counter = 0;
         skip = false;
-
+        startFade = false;
+        userInput = true; // allow user input at the start
+        nextButton.SetActive(true); // ensure next button is visible at the start
+    }
+    
+    void Start()
+    {
         // initialize prompt system
         promptText = GameObject.Find("Prompt Text").GetComponent<TMP_Text>();
         promptText.text = prompts[counter];
@@ -65,27 +76,35 @@ public class Prompt : MonoBehaviour
 
     void Update()
     {
-        NextPrompt(); //handles moving to the next prompt
-
-        // special handling for interactive questions (after initial instructions)
-        if (counter >= 6 && counter != 14 && counter != 7)
+        if (userInput == true)
         {
-            nextButton.SetActive(false); // hide next button during interactive questions
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                NextPrompt(); // handles moving to the next prompt
+            }
+
+            // special handling for interactive questions (after initial instructions)
+            if (counter > 6 && counter < 17)
+            {
+                nextButton.SetActive(false); // hide next button during interactive questions
+                
+                // check for skipping or answering questions
+                SkipQuestion();
+                AnswerQuestion();
+            }
+            else
+            {
+                nextButton.SetActive(true); // show next button during instructions
+            }
+
+            if (startFade == true)
+            {
+                StartCoroutine(FadeText(prompts[counter]));
+                startFade = false;
+            }
             
-            // check for skipping or answering questions
-            SkipQuestion();
-            AnswerQuestion();
         }
-        else
-        {
-            nextButton.SetActive(true); // show next button during instructions
-        }
-
-        if (startFade == true)
-        {
-            StartCoroutine(fadeText(prompts[counter]));
-            startFade = false;
-        }
+        
     }
 
 
@@ -98,16 +117,16 @@ public class Prompt : MonoBehaviour
     {
         if (counter >= 0 && counter < prompts.Length)
         {
-            // Set prompt text and log debug information
-            //promptText.text = prompts[counter];
+            // set prompt text and log debug information
+            // initialize text fade effect
             startFade = true;
 
+            Debug.Log("Current Prompt: " + counter);
             Debug.Log("Responses: " + string.Join(",", responses));
         }
-        else //UNTESTED
+        else
         {
-            // Display final message when all prompts are completed
-            promptText.text = "Please enjoy your soundscape_";
+            // if counter is out of bounds, display a warning and reset to the last valid prompt
             Debug.LogWarning("Attempted to access prompt outside of array bounds.");
         }
     }
@@ -116,16 +135,13 @@ public class Prompt : MonoBehaviour
     /// Handles navigation to the next prompt during instruction screens.
     /// Advances to the next prompt when spacebar is pressed.
     /// </summary>
-    static void NextPrompt()
+    public static void NextPrompt()
     {
-        // Only allow advancing during specific prompts (initial instructions, final prompts)
-        if (counter < 6 || counter == 14 || counter == 7)
+        // only allow advancing during specific prompts (initial instructions, final prompts)
+        if (counter <= 6 || counter >= 17)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                counter += 1;
-                UpdatePromptText();
-            }
+            counter += 1;
+            UpdatePromptText();
         }
     }
 
@@ -137,7 +153,7 @@ public class Prompt : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F)) // initiate skip process when 'F' is pressed
         {
-            promptText.text = "LOL? FR? (Y / N)";
+            promptText.text = "Are you sure you wish to proceed? (Y / N)_";
             skip = true;
         }
 
@@ -189,8 +205,17 @@ public class Prompt : MonoBehaviour
         }
     }
 
-    public static IEnumerator fadeText(string newText)
+    #endregion
+
+    #region coroutine method
+    /// <summary>
+    /// Coroutine to fade the prompt text in and out.
+    /// Fades out the current text, updates it, and fades it back in.   
+    /// </summary>
+    public static IEnumerator FadeText(string nextText)
     {
+        userInput = false; // disable user input during fade
+
         float alpha = 1f;
 
         while(alpha > 0.0f)
@@ -199,7 +224,7 @@ public class Prompt : MonoBehaviour
             promptText.color = new Color(promptText.color.r, promptText.color.g, promptText.color.b, alpha);
             yield return null;
         }
-        promptText.text = newText;
+        promptText.text = nextText;
 
         yield return new WaitForSeconds(1);
         while(alpha < 1.0f)
@@ -208,6 +233,8 @@ public class Prompt : MonoBehaviour
             promptText.color = new Color(promptText.color.r, promptText.color.g, promptText.color.b, alpha);
             yield return null;
         }
+
+        userInput = true; // re-enable user input after fade
     }
 
     #endregion
