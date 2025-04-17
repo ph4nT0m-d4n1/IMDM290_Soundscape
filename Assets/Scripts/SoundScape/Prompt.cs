@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,7 @@ public class Prompt : MonoBehaviour
 
     static TMP_Text promptText; //prompt text being displayed
     static bool skip; //indicates whether the current question is being skipped
-    
+    static bool startFade = false; //determines when to run the fadeText animation coroutine in Update()
 
     #endregion
 
@@ -79,6 +80,12 @@ public class Prompt : MonoBehaviour
         {
             nextButton.SetActive(true); // show next button during instructions
         }
+
+        if (startFade == true)
+        {
+            StartCoroutine(fadeText(prompts[counter]));
+            startFade = false;
+        }
     }
 
 
@@ -92,7 +99,9 @@ public class Prompt : MonoBehaviour
         if (counter >= 0 && counter < prompts.Length)
         {
             // Set prompt text and log debug information
-            promptText.text = prompts[counter];
+            //promptText.text = prompts[counter];
+            startFade = true;
+
             Debug.Log("Responses: " + string.Join(",", responses));
         }
         else //UNTESTED
@@ -177,6 +186,27 @@ public class Prompt : MonoBehaviour
             responses.Add(10);
             counter += 1;
             UpdatePromptText();
+        }
+    }
+
+    public static IEnumerator fadeText(string newText)
+    {
+        float alpha = 1f;
+
+        while(alpha > 0.0f)
+        {
+            alpha -= Time.deltaTime / 1f ; //deltaTime / fadeTime
+            promptText.color = new Color(promptText.color.r, promptText.color.g, promptText.color.b, alpha);
+            yield return null;
+        }
+        promptText.text = newText;
+
+        yield return new WaitForSeconds(1);
+        while(alpha < 1.0f)
+        {
+            alpha += Time.deltaTime / 1f ; //deltaTime / fadeTime
+            promptText.color = new Color(promptText.color.r, promptText.color.g, promptText.color.b, alpha);
+            yield return null;
         }
     }
 
