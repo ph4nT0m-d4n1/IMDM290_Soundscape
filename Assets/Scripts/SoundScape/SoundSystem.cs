@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 /// <summary>
 /// Manages the sound system for a Soundscape Therapy application.
 /// Handles activation of audio sources based on user responses to prompts.
@@ -48,11 +49,18 @@ public class SoundSystem : MonoBehaviour
             // get all AudioSource components for this question GameObject
             AudioSource[] audioSources = questions[i].GetComponents<AudioSource>();
 
+            // set all AudioSource components' volume to 0
+            for (int j = 0; j < audioSources.Length; j++)
+            {
+                audioSources[j].volume = 0f;
+            }
+
             // disable all AudioSource components
             for (int j = 0; j < audioSources.Length; j++)
             {
                 audioSources[j].enabled = false;
             }
+
         }
     }
 
@@ -87,21 +95,25 @@ public class SoundSystem : MonoBehaviour
                 if (value != 0 && value <= 3)
                 {
                     q_audio[0].enabled = true;
+                    StartCoroutine(FadeInAudio(q_audio[0]));
                     Debug.Log($"Activated q{questionNumber + 1} at LOW based on response");
                 }
                 else if (value >= 4 && value <= 5)
                 {
                     q_audio[1].enabled = true;
+                    StartCoroutine(FadeInAudio(q_audio[1]));
                     Debug.Log($"Activated q{questionNumber + 1} at MID-LOW based on response");
                 }
                 else if (value >= 6 && value <= 7)
                 {
                     q_audio[2].enabled = true;
+                    StartCoroutine(FadeInAudio(q_audio[2]));
                     Debug.Log($"Activated q{questionNumber + 1} at MID-HIGH based on response");
                 }
                 else if (value >= 8 && value <= 10)
                 {
                     q_audio[3].enabled = true;
+                    StartCoroutine(FadeInAudio(q_audio[3]));
                     Debug.Log($"Activated q{questionNumber + 1} at HIGH based on response");
                 }
             }
@@ -109,5 +121,20 @@ public class SoundSystem : MonoBehaviour
         
         // update the count of processed responses
         processedResponseCount = Prompt.responses.Count;
+    }
+
+    /// <summary>
+    /// Coroutine to fade the audio in.
+    /// </summary>
+    public static IEnumerator FadeInAudio (AudioSource audio)
+    {
+        float volume = 0f;
+
+        while(volume < 1.0f)
+        {
+            volume += Time.deltaTime / 7f ; //deltaTime / fadeTime
+            audio.volume = volume;
+            yield return null;
+        }
     }
 }

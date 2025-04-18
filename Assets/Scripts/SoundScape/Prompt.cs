@@ -96,7 +96,7 @@ public class Prompt : MonoBehaviour
             {
                 nextButton.SetActive(true); // show next button during instructions
             }
-
+            
             if (startFade == true)
             {
                 StartCoroutine(FadeText(prompts[counter]));
@@ -224,9 +224,10 @@ public class Prompt : MonoBehaviour
             promptText.color = new Color(promptText.color.r, promptText.color.g, promptText.color.b, alpha);
             yield return null;
         }
+
         promptText.text = nextText;
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         while(alpha < 1.0f)
         {
             alpha += Time.deltaTime / 1f ; //deltaTime / fadeTime
