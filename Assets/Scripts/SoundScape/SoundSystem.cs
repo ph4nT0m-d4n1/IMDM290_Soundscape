@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+
 /// <summary>
 /// Manages the sound system for a Soundscape Therapy application.
 /// Handles activation of audio sources based on user responses to prompts.
@@ -9,6 +10,8 @@ public class SoundSystem : MonoBehaviour
 {
     GameObject [] questions;
     int processedResponseCount = 0; // track how many responses we've already processed
+
+    #region main methods
 
     void Awake()
     {
@@ -31,7 +34,7 @@ public class SoundSystem : MonoBehaviour
     }
 
     /// <summary>
-    /// Initializes the sound system by setting up the questions and disabling their audio sources.
+    /// Initializes the sound system by setting up the track layers and setting their volumes to zero.
     /// </summary>
     /// <remarks>
     /// This method retrieves all child GameObjects of the SoundSystem GameObject,
@@ -53,12 +56,6 @@ public class SoundSystem : MonoBehaviour
             for (int j = 0; j < audioSources.Length; j++)
             {
                 audioSources[j].volume = 0f;
-            }
-
-            // disable all AudioSource components
-            for (int j = 0; j < audioSources.Length; j++)
-            {
-                audioSources[j].enabled = false;
             }
 
         }
@@ -94,25 +91,21 @@ public class SoundSystem : MonoBehaviour
 
                 if (value != 0 && value <= 3)
                 {
-                    q_audio[0].enabled = true;
                     StartCoroutine(FadeInAudio(q_audio[0]));
                     Debug.Log($"Activated q{questionNumber + 1} at LOW based on response");
                 }
                 else if (value >= 4 && value <= 5)
                 {
-                    q_audio[1].enabled = true;
                     StartCoroutine(FadeInAudio(q_audio[1]));
                     Debug.Log($"Activated q{questionNumber + 1} at MID-LOW based on response");
                 }
                 else if (value >= 6 && value <= 7)
                 {
-                    q_audio[2].enabled = true;
                     StartCoroutine(FadeInAudio(q_audio[2]));
                     Debug.Log($"Activated q{questionNumber + 1} at MID-HIGH based on response");
                 }
                 else if (value >= 8 && value <= 10)
                 {
-                    q_audio[3].enabled = true;
                     StartCoroutine(FadeInAudio(q_audio[3]));
                     Debug.Log($"Activated q{questionNumber + 1} at HIGH based on response");
                 }
@@ -122,19 +115,24 @@ public class SoundSystem : MonoBehaviour
         // update the count of processed responses
         processedResponseCount = Prompt.responses.Count;
     }
+    #endregion
 
+    #region coroutine method
     /// <summary>
-    /// Coroutine to fade the audio in.
+    /// Gradually increases the volume of an AudioSource to create a fade-in effect.
+    /// The volume will increase from 0 to 1 over a period of approximately 7 seconds.
     /// </summary>
     public static IEnumerator FadeInAudio (AudioSource audio)
     {
         float volume = 0f;
+        float fadeTime = 7f; // duration of the fade-in effect in seconds
 
         while(volume < 1.0f)
         {
-            volume += Time.deltaTime / 7f ; //deltaTime / fadeTime
+            volume += Time.deltaTime / fadeTime ; //deltaTime / fadeTime
             audio.volume = volume;
             yield return null;
         }
     }
+    #endregion
 }
