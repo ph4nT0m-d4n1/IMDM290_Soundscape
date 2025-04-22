@@ -11,11 +11,15 @@ using Debug = UnityEngine.Debug;
 public class RunPyScript : MonoBehaviour
 {
     #region global reference variables
-    [SerializeField] private string pythonPath = "Python"; //path to your Python executable. If Python is in your PATH, you can just use "Python" or "python3".
 
-    [SerializeField] private string scriptPath = "Assets/Scripts/Python-OSC/sender.py"; //path to the Python script to be executed.
-    private int processId = 0; //process ID of the running Python script.
-    private CancellationTokenSource cts; //cancellation token source for managing the task's lifetime.
+    //path to your Python executable. If Python is in your PATH, you can just use "Python" or "python3"
+    [SerializeField] private string pythonPath = "Python"; 
+    
+    //sample mac python3 path
+    ///"Library/Frameworks/Python.framework/Versions/3.12/bin/python3"
+
+    [SerializeField] private string scriptPath = "Assets/Scripts/Python-OSC/sender.py"; //path to the Python script to be executed
+    private int processId = 0; //process ID of the running Python script
 
     #endregion
 
@@ -34,16 +38,13 @@ public class RunPyScript : MonoBehaviour
             Debug.LogError("Script path is not set.");
             return;
         }
-
-        cts = new CancellationTokenSource(); // initialize the cancellation token source
     }
 
     public void RunPythonScript()
     {
-        using (cts)
-        {
-            _ = RunScript(cts.Token); // discard the task to suppress compiler warning CS4014 (call is not awaited)
-        }
+
+        _ = RunScript(); // discard the task to suppress compiler warning CS4014 (call is not awaited)
+
     }
 
     /// <summary>
@@ -51,7 +52,7 @@ public class RunPyScript : MonoBehaviour
     /// Captures and logs both standard output and error output from the Python script.
     /// </summary>
     /// <returns> A Task representing the asynchronous operation. </returns>
-    async Task RunScript(CancellationToken cancellationToken)
+    async Task RunScript()
     {
         // configuring the process startup parameters
         ProcessStartInfo pyScript = new ProcessStartInfo
@@ -105,10 +106,12 @@ public class RunPyScript : MonoBehaviour
         }
     }
 
-    public void KillProcess() //not very graceful, but it works
+    /// <summary>
+    /// Terminates the running Python process if it is still active.
+    /// This method is not very graceful, but it works.
+    /// </summary>
+    public void KillProcess()
     {
-        //unceremoniously kills the process if it is running
-
         if (processId > 0)
         {
             try
