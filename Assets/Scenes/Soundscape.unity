@@ -1541,7 +1541,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2700,8 +2700,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35b90893bd69ef4f93ca1e2d9ef03b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pythonPath: python3
-  scriptPath: Assets/Scripts/Python-OSC/sender.py
+  pythonPath: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+  mainScript: Assets/IMD_EEG/main.py
+  secondaryScript: Assets/IMD_EEG/tools/band-OSC.py
 --- !u!114 &957239022
 MonoBehaviour:
   m_ObjectHideFlags: 0

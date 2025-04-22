@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
+using NUnit.Framework;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -12,14 +13,17 @@ public class RunPyScript : MonoBehaviour
 {
     #region global reference variables
 
-    //path to your Python executable. If Python is in your PATH, you can just use "Python" or "python3"
+    // path to your Python executable. If Python is in your PATH, you can just use "Python" or "python3"
     [SerializeField] private string pythonPath = "Python"; 
-    
-    //sample mac python3 path
-    ///"Library/Frameworks/Python.framework/Versions/3.12/bin/python3"
 
-    [SerializeField] private string scriptPath = "Assets/Scripts/Python-OSC/sender.py"; //path to the Python script to be executed
-    private int processId = 0; //process ID of the running Python script
+    // sample mac python3 path
+    // "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"
+
+    [SerializeField] private string mainScript = "Assets/Scripts/Python-OSC/sender.py"; //path to the Python script to be executed
+
+    [SerializeField] private string secondaryScript = null; // path to the secondary Python script to be executed, if any
+    private int main_processId = 0; //process ID of the main Python script
+    private int second_processId = 0; //process ID of the secondary Python script
 
     #endregion
 
@@ -33,7 +37,7 @@ public class RunPyScript : MonoBehaviour
         }
 
         // check if the script path is valid
-        if (string.IsNullOrEmpty(scriptPath))
+        if (string.IsNullOrEmpty(mainScript))
         {
             Debug.LogError("Script path is not set.");
             return;
@@ -42,8 +46,13 @@ public class RunPyScript : MonoBehaviour
 
     public void RunPythonScript()
     {
+        _ = RunScript(mainScript); // discard the task to suppress compiler warning CS4014 (call is not awaited)
 
-        _ = RunScript(); // discard the task to suppress compiler warning CS4014 (call is not awaited)
+        if (secondaryScript != null && secondaryScript != "")
+        {
+            // run the secondary script if provided
+            _ = RunScript(secondaryScript);
+        }
 
     }
 
@@ -52,7 +61,7 @@ public class RunPyScript : MonoBehaviour
     /// Captures and logs both standard output and error output from the Python script.
     /// </summary>
     /// <returns> A Task representing the asynchronous operation. </returns>
-    async Task RunScript()
+    async Task RunScript(string scriptPath)
     {
         // configuring the process startup parameters
         ProcessStartInfo pyScript = new ProcessStartInfo
@@ -77,8 +86,21 @@ public class RunPyScript : MonoBehaviour
             }
 
             Debug.Log("Process started with ID: " + process.Id);
-            processId = process.Id; // store the process ID
+            if (main_processId == 0)
+            {
+                main_processId = process.Id; // store the process ID
+            }
+            else if (main_processId != 0)
+            {
+                second_processId = process.Id; // store the process ID
+            }
+            else
+            {
+                Debug.LogError("Failed to retrieve the process ID.");
+                return;
+            }
 
+            
             // read output streams asynchronously to avoid deadlocks
             Task<string> outputTask = process.StandardOutput.ReadToEndAsync();
             Task<string> errorTask = process.StandardError.ReadToEndAsync();
@@ -112,11 +134,11 @@ public class RunPyScript : MonoBehaviour
     /// </summary>
     public void KillProcess()
     {
-        if (processId > 0)
+        if (second_processId > 0)
         {
             try
             {
-                Process process = Process.GetProcessById(processId);
+                Process process = Process.GetProcessById(second_processId);
                 if (!process.HasExited)
                 {
                     process.Kill();
@@ -127,6 +149,28 @@ public class RunPyScript : MonoBehaviour
             {
                 Debug.LogError("Failed to kill the process: " + exception.Message);
             }
+
+            if (main_processId > 0)
+            {
+                try
+                {
+                    Process process = Process.GetProcessById(main_processId);
+                    if (!process.HasExited)
+                    {
+                        process.Kill();
+                        Debug.Log("Process killed.");
+                    }
+                }
+                catch (System.Exception exception)
+                {
+                    Debug.LogError("Failed to kill the process: " + exception.Message);
+                }
+            }
         }
+        else
+        {
+            Debug.LogWarning("No process to kill.");
+        }
+        
     }
 }

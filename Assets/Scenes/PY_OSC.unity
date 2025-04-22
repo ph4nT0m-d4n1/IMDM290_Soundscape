@@ -679,7 +679,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pythonPath: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
-  scriptPath: Assets/IMD_EEG/main.py
+  mainScript: Assets/Scripts/Python-OSC/sender.py
+  secondaryScript: 
 --- !u!114 &1380418001
 MonoBehaviour:
   m_ObjectHideFlags: 0
