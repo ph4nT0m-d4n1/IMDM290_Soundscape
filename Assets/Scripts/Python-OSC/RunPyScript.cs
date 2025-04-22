@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -10,15 +11,39 @@ using Debug = UnityEngine.Debug;
 public class RunPyScript : MonoBehaviour
 {
     #region global reference variables
-    public string pythonPath = "Python"; //path to your Python executable. If Python is in your PATH, you can just use "Python" or "python3".
+    [SerializeField] private string pythonPath = "Python"; //path to your Python executable. If Python is in your PATH, you can just use "Python" or "python3".
 
-    public string scriptPath = "Assets/Scripts/Python-OSC/sender.py"; //path to the Python script to be executed.
-    
+    [SerializeField] private string scriptPath = "Assets/Scripts/Python-OSC/sender.py"; //path to the Python script to be executed.
+    private int processId = 0; //process ID of the running Python script.
+    private CancellationTokenSource cts; //cancellation token source for managing the task's lifetime.
+
     #endregion
 
     void Start()
     {
-        _ = RunPy(); // discard the task to suppress compiler warning CS4014 (call is not awaited)
+        // check if the Python executable is available
+        if (string.IsNullOrEmpty(pythonPath))
+        {
+            Debug.LogError("Python path is not set.");
+            return;
+        }
+
+        // check if the script path is valid
+        if (string.IsNullOrEmpty(scriptPath))
+        {
+            Debug.LogError("Script path is not set.");
+            return;
+        }
+
+        cts = new CancellationTokenSource(); // initialize the cancellation token source
+    }
+
+    public void RunPythonScript()
+    {
+        using (cts)
+        {
+            _ = RunScript(cts.Token); // discard the task to suppress compiler warning CS4014 (call is not awaited)
+        }
     }
 
     /// <summary>
@@ -26,34 +51,39 @@ public class RunPyScript : MonoBehaviour
     /// Captures and logs both standard output and error output from the Python script.
     /// </summary>
     /// <returns> A Task representing the asynchronous operation. </returns>
-    async Task RunPy()
+    async Task RunScript(CancellationToken cancellationToken)
     {
         // configuring the process startup parameters
-        ProcessStartInfo senderPy = new ProcessStartInfo();
-        senderPy.FileName = pythonPath;                // set the executable to our Python interpreter
-        senderPy.Arguments = scriptPath;               // pass the script path as an argument
-        senderPy.UseShellExecute = false;              // don't use the OS shell to start the process
-        senderPy.CreateNoWindow = true;                // run without creating a console window
-        senderPy.RedirectStandardOutput = true;        // capture the standard output
-        senderPy.RedirectStandardError = true;         // capture the error output
+        ProcessStartInfo pyScript = new ProcessStartInfo
+        {
+            FileName = pythonPath,                       // path to the Python executable
+            Arguments = scriptPath,                      // path to the Python script
+            UseShellExecute = false,                     // don't use the OS shell to start the process
+            CreateNoWindow = true,                       // run without creating a console window
+            RedirectStandardOutput = true,               // capture standard output
+            RedirectStandardError = true                 // capture error output
+        };
 
         try
         {
             // starts the Python process
-            Process OSC_Process = Process.Start(senderPy);
+            Process process = Process.Start(pyScript);
 
-            if (OSC_Process == null)
+            if (process == null)
             {
                 Debug.LogError("Failed to start the process.");
                 return;
             }
 
+            Debug.Log("Process started with ID: " + process.Id);
+            processId = process.Id; // store the process ID
+
             // read output streams asynchronously to avoid deadlocks
-            Task<string> outputTask = OSC_Process.StandardOutput.ReadToEndAsync();
-            Task<string> errorTask = OSC_Process.StandardError.ReadToEndAsync();
+            Task<string> outputTask = process.StandardOutput.ReadToEndAsync();
+            Task<string> errorTask = process.StandardError.ReadToEndAsync();
 
             // wait for the process to exit without blocking Unity's main thread
-            await Task.Run(() => OSC_Process.WaitForExit());
+            await Task.Run(() => process.WaitForExit());
 
             // retrieve the output and error text
             string output = await outputTask;
@@ -66,12 +96,34 @@ public class RunPyScript : MonoBehaviour
                 Debug.LogError("Process Error:\n" + error);
             }
 
-            Debug.Log("Process exited with exit code: " + OSC_Process.ExitCode);
+            Debug.Log("Process exited with exit code: " + process.ExitCode);
         }
         catch (System.Exception exception)
         {
             // log any exceptions that occur during process execution
             Debug.LogError("An error occurred: " + exception.Message);
+        }
+    }
+
+    public void KillProcess() //not very graceful, but it works
+    {
+        //unceremoniously kills the process if it is running
+
+        if (processId > 0)
+        {
+            try
+            {
+                Process process = Process.GetProcessById(processId);
+                if (!process.HasExited)
+                {
+                    process.Kill();
+                    Debug.Log("Process killed.");
+                }
+            }
+            catch (System.Exception exception)
+            {
+                Debug.LogError("Failed to kill the process: " + exception.Message);
+            }
         }
     }
 }
