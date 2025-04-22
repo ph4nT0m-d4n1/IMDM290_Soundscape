@@ -31,28 +31,28 @@ public class Prompt : MonoBehaviour
     /// Includes welcome messages, instructions, and questions.
     /// </summary>
     public static string[] prompts = {
-        "Hello_", //0
-        "Welcome to your Soundscape therapy session_", //1
-        "Please answer each question to the best of your ability on a scale of 1 - 10_", //2
-        "Use the number row on your keyboard to provide responses_", //3
-        "The number 0 will be used for the value of 10_", //4
-        "The F Key will be used to skip questions_", //5
-        "When you are ready, we will begin_", //6
+        "Hello.", //0
+        "Welcome to your Soundscape Therapy Session.", //1
+        "Please answer each question to the best of your ability on a scale of 1 - 10.", //2
+        "Use the number row on your keyboard to provide responses.", //3
+        "The number 0 will be used for the value of 10.", //4
+        "The F Key will be used to skip questions.", //5
+        "When you are ready, we will begin...", //6
 
-        "How clear is your mind at this moment?_", //Q1 - Vinyl SFX
-        "Have you fully woken up today?_", //Q2 - Pluck
-        "Do you feel a sense of relaxation?_", //Q3 - Pad
-        "Is your mind racing at this moment?_", //Q4 - Lead
-        "How comfortable are you right now?_", //Q5 - Bass
-        "Are you enjoying the weather today?_", //Q6 - SFX2
-        "Do you think your day will get better?_", //Q7 - Arp
-        "How long since you last spoke to your family?_", //Q8 - Main Lead
-        "Have you been feeling loved recently?_", //Q9 - Vocal Chop
-        "Do you love yourself?_", //Q10 - Drums
+        "How clear is your mind at this moment?", //Q1 - Vinyl SFX
+        "Have you fully woken up today?", //Q2 - Pluck
+        "Do you feel a sense of relaxation?", //Q3 - Pad
+        "Is your mind racing at this moment?", //Q4 - Lead
+        "How comfortable are you right now?", //Q5 - Bass
+        "Are you enjoying the weather today?", //Q6 - SFX2
+        "Do you think your day will get better?", //Q7 - Arp
+        "How often do you see your family?", //Q8 - Main Lead
+        "Have you been feeling loved recently?", //Q9 - Vocal Chop
+        "Do you love yourself?", //Q10 - Drums
         
-        "I'm glad you stayed_", //17
-        "Enjoy this moment while it's here_", //18
-        "Enjoy the sound and sight of You_" //19
+        "I'm glad you stayed.", //17
+        "Enjoy this moment while it's here.", //18
+        "Enjoy the sound and sight of You." //19
     };
 
     #endregion
