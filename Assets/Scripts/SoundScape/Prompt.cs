@@ -217,10 +217,11 @@ public class Prompt : MonoBehaviour
         userInput = false; // disable user input during fade
 
         float alpha = 1f;
+        float fadeTime = 2f; // duration of the fade effect in seconds
 
         while(alpha > 0.0f)
         {
-            alpha -= Time.deltaTime / 1f ; //deltaTime / fadeTime
+            alpha -= Time.deltaTime / (fadeTime * 0.75f) ; 
             promptText.color = new Color(promptText.color.r, promptText.color.g, promptText.color.b, alpha);
             yield return null;
         }
@@ -230,7 +231,7 @@ public class Prompt : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         while(alpha < 1.0f)
         {
-            alpha += Time.deltaTime / 1f ; //deltaTime / fadeTime
+            alpha += Time.deltaTime / (fadeTime * 2f) ;
             promptText.color = new Color(promptText.color.r, promptText.color.g, promptText.color.b, alpha);
             yield return null;
         }

@@ -89,25 +89,30 @@ public class SoundSystem : MonoBehaviour
 
                 AudioSource[] q_audio = questions[i].GetComponents<AudioSource>();
 
-                if (value != 0 && value <= 3)
+                if (value != 0 && value <= 2)
                 {
                     StartCoroutine(FadeInAudio(q_audio[0]));
-                    Debug.Log($"Activated q{questionNumber + 1} at LOW based on response");
+                    Debug.Log($"Activated q{questionNumber + 1} at SUPER-LOW based on response");
                 }
-                else if (value >= 4 && value <= 5)
+                else if (value >= 3 && value <= 4)
                 {
                     StartCoroutine(FadeInAudio(q_audio[1]));
-                    Debug.Log($"Activated q{questionNumber + 1} at MID-LOW based on response");
+                    Debug.Log($"Activated q{questionNumber + 1} at LOW based on response");
                 }
-                else if (value >= 6 && value <= 7)
+                else if (value >= 5 && value <= 6)
                 {
                     StartCoroutine(FadeInAudio(q_audio[2]));
-                    Debug.Log($"Activated q{questionNumber + 1} at MID-HIGH based on response");
+                    Debug.Log($"Activated q{questionNumber + 1} at MID based on response");
                 }
-                else if (value >= 8 && value <= 10)
+                else if (value >= 7 && value <= 8)
                 {
                     StartCoroutine(FadeInAudio(q_audio[3]));
                     Debug.Log($"Activated q{questionNumber + 1} at HIGH based on response");
+                }
+                else if (value >= 9 && value <= 10)
+                {
+                    StartCoroutine(FadeInAudio(q_audio[4]));
+                    Debug.Log($"Activated q{questionNumber + 1} at SUPER-HIGH based on response");
                 }
             }
         }
