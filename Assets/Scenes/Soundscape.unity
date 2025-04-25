@@ -1074,8 +1074,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 290342b39a89d463a9e4bd6cdbaf6cf6, type: 3}
+  m_Resource: {fileID: 8300000, guid: 290342b39a89d463a9e4bd6cdbaf6cf6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1173,8 +1173,8 @@ GameObject:
   - component: {fileID: 316764121}
   - component: {fileID: 316764120}
   - component: {fileID: 316764122}
-  - component: {fileID: 316764123}
   - component: {fileID: 316764124}
+  - component: {fileID: 316764123}
   m_Layer: 0
   m_Name: Q9 - Vocal Chop
   m_TagString: Untagged
@@ -3058,8 +3058,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 2c06e3652dde34da5b0f1215a0b53f0e, type: 3}
+  m_Resource: {fileID: 8300000, guid: 2c06e3652dde34da5b0f1215a0b53f0e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -4523,8 +4523,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: da99f96da7b274f518e71d518fd202b5, type: 3}
+  m_Resource: {fileID: 8300000, guid: da99f96da7b274f518e71d518fd202b5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5836,8 +5836,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: c5ef5fd93dacb4ebcaf7b016784d4dbb, type: 3}
+  m_Resource: {fileID: 8300000, guid: c5ef5fd93dacb4ebcaf7b016784d4dbb, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -6467,8 +6467,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 716d25fefe86c4413aee64e1b6ca5d5f, type: 3}
+  m_Resource: {fileID: 8300000, guid: 716d25fefe86c4413aee64e1b6ca5d5f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
