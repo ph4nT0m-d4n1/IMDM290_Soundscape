@@ -3,7 +3,7 @@ using extOSC;
 using TMPro;
 using UnityEngine;
 
-public class Receiver : MonoBehaviour
+public class Receiver_Test : MonoBehaviour
 {
     [SerializeField] TMP_Text display; //text object. visible in inspector
     public string address = "/address"; //address our Python script is sending data to

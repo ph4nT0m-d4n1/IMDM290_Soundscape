@@ -1235,7 +1235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35b90893bd69ef4f93ca1e2d9ef03b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pythonPath: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+  pythonPath: Python
   mainScript: Assets/IMD_EEG/main.py
   secondaryScript: Assets/IMD_EEG/tools/band-OSC.py
 --- !u!1 &1399593228
