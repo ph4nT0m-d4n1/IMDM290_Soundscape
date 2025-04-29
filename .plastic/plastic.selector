@@ -1,0 +1,4 @@
+repository "Soundscape3D@unity_327DB9B4224C738C3B93@cloud"
+  path "/"
+    br "/main"
+    co "/main"
