@@ -36,7 +36,7 @@ public class Prompt : MonoBehaviour
         "Please answer each question to the best of your ability on a scale of 1 - 10.", //2
         "Use the number row on your keyboard to provide responses.", //3
         "The number 0 will be used for the value of 10.", //4
-        "The F Key will be used to skip questions.", //5
+        "The F Key can be used to skip questions.", //5
         "When you are ready, we will begin...", //6
 
         "How clear is your mind at this moment?", //Q1 - Vinyl SFX

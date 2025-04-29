@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 /// <summary>
 /// Manages the sound system for a Soundscape Therapy application.
@@ -10,6 +11,9 @@ public class SoundSystem : MonoBehaviour
 {
     GameObject [] questions;
     int processedResponseCount = 0; // track how many responses we've already processed
+    
+    public AudioSource leader; // AudioSource that all other tracks with sync timesamples with, plays at 0 volume
+    List<AudioSource> followers = new List<AudioSource>(); // AudioSources that will sync with leader
 
     #region main methods
 
@@ -30,6 +34,13 @@ public class SoundSystem : MonoBehaviour
         if (processedResponseCount < Prompt.responses.Count)
         {
             ProcessNewResponses();
+        }
+
+        // syncs every AudioSource in followers with leader
+        foreach (AudioSource i in followers)
+        {
+            i.timeSamples = leader.timeSamples;
+            
         }
     }
 
@@ -56,6 +67,12 @@ public class SoundSystem : MonoBehaviour
             for (int j = 0; j < audioSources.Length; j++)
             {
                 audioSources[j].volume = 0f;
+            }
+
+            // set all Audiosource components to disabled
+            for (int j = 0; j < audioSources.Length; j++)
+            {
+                audioSources[j].enabled = false;
             }
 
         }
@@ -91,26 +108,36 @@ public class SoundSystem : MonoBehaviour
 
                 if (value != 0 && value <= 2)
                 {
+                    q_audio[0].enabled = true; // enables corresponding AudioSource
+                    followers.Add(q_audio[0]); // adds AudioSource to list of followers to sync with leader
                     StartCoroutine(FadeInAudio(q_audio[0]));
                     Debug.Log($"Activated q{questionNumber + 1} at SUPER-LOW based on response");
                 }
                 else if (value >= 3 && value <= 4)
                 {
+                    q_audio[1].enabled = true;
+                    followers.Add(q_audio[1]);
                     StartCoroutine(FadeInAudio(q_audio[1]));
                     Debug.Log($"Activated q{questionNumber + 1} at LOW based on response");
                 }
                 else if (value >= 5 && value <= 6)
                 {
+                    q_audio[2].enabled = true;
+                    followers.Add(q_audio[2]);
                     StartCoroutine(FadeInAudio(q_audio[2]));
                     Debug.Log($"Activated q{questionNumber + 1} at MID based on response");
                 }
                 else if (value >= 7 && value <= 8)
                 {
+                    q_audio[3].enabled = true;
+                    followers.Add(q_audio[3]);
                     StartCoroutine(FadeInAudio(q_audio[3]));
                     Debug.Log($"Activated q{questionNumber + 1} at HIGH based on response");
                 }
                 else if (value >= 9 && value <= 10)
                 {
+                    q_audio[4].enabled = true;
+                    followers.Add(q_audio[4]);
                     StartCoroutine(FadeInAudio(q_audio[4]));
                     Debug.Log($"Activated q{questionNumber + 1} at SUPER-HIGH based on response");
                 }
@@ -132,7 +159,7 @@ public class SoundSystem : MonoBehaviour
         float volume = 0f;
         float fadeTime = 7f; // duration of the fade-in effect in seconds
 
-        while(volume < 1.0f)
+        while(volume < 1f)
         {
             volume += Time.deltaTime / fadeTime ; //deltaTime / fadeTime
             audio.volume = volume;
