@@ -2,39 +2,43 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float radius = 20f;              // Max distance from camera
-    public float speed = 1f;               // Oscillation speed
-    public float angleOffset = 90f;         // Angle around the camera (in degrees)
+    public float radius = 10f;                // Orbit radius
+    public float orbitSpeed = 100f;           // Degrees per second
+    public float angleOffset = 0f;           // Starting angle in degrees
 
-    private Vector3 directionFromCamera;
-    private Vector3 cameraPosition;
-    private float timeOffset;
+    private Vector3 orbitAxis = Vector3.up;  // Axis to orbit around (Y by default)
+    private float currentAngle;
+    private Vector3 orbitCenter;
 
     void Start()
     {
-        // Get camera's position
-        cameraPosition = Camera.main.transform.position;
-
-        // Compute angle in radians
-        float angleRad = angleOffset * Mathf.Deg2Rad;
-
-        // Use camera's right and forward to define a horizontal plane
-        Vector3 right = Camera.main.transform.right;
-        Vector3 forward = Vector3.Cross(Vector3.up, right).normalized;
-
-        // Get a point on the circle's perimeter relative to camera
-        directionFromCamera = (right * Mathf.Cos(angleRad) + forward * Mathf.Sin(angleRad)).normalized;
-
-        timeOffset = Random.Range(0f, 100f); // Optional variety
+        orbitCenter = Camera.main.transform.position;
+        currentAngle = angleOffset;
+        UpdatePosition(); // Set initial position
     }
 
     void Update()
     {
-        float t = LerpFraction((Time.time + timeOffset) * speed);
-        transform.position = cameraPosition + directionFromCamera * radius * t;
+        orbitCenter = Camera.main.transform.position; // Update if camera moves
+        currentAngle += orbitSpeed * Time.deltaTime;
+        UpdatePosition();
     }
-    float LerpFraction(float time)
+
+    void UpdatePosition()
     {
-        return 0.5f * (1 + Mathf.Sin(time)); // Alternates smoothly from 0 to 1 and back
+        // Calculate direction vector based on current angle
+        float rad = currentAngle * Mathf.Deg2Rad;
+        Vector3 offset = new Vector3(Mathf.Cos(rad), 0f, Mathf.Sin(rad)) * radius;
+
+        // Align the orbit to the camera's horizontal plane
+        Vector3 forward = Camera.main.transform.forward;
+        forward.y = 0f;
+        forward.Normalize();
+        Vector3 right = Camera.main.transform.right;
+
+        // Convert offset to world space relative to camera
+        Vector3 worldOffset = right * offset.x + forward * offset.z;
+
+        transform.position = orbitCenter + worldOffset;
     }
 }
