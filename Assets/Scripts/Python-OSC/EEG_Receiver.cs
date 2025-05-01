@@ -14,11 +14,11 @@ public class EEG_Receiver : MonoBehaviour
 
     //the float values that will be updated (can be used for other purposes)
     
-    float full_value;
-    float gamma_value;
-    float alpha_value;
-    float beta_value;
-    float theta_value;
+    public float full_value;
+    public float gamma_value;
+    public float alpha_value;
+    public float beta_value;
+    public float theta_value;
     
     public string[] addresses = {"/full-freq", "/gamma", "/alpha", "/beta", "/theta"};
     public OSCReceiver receiver;
