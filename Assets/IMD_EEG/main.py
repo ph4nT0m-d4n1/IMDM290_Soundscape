@@ -3,12 +3,16 @@
 # if __name__ == "__main__":
 #     emotiv_epoc_x = EmotivEpocX()
 #     emotiv_epoc_x.main_loop()
-
+"""Small example to start Emotiv device streams in separate threads using hid and emotiv_lsl library.
+This script enumerates Emotiv devices and starts a thread for each device to handle its data stream."""
 from threading import Thread
 from emotiv_lsl.emotiv_epoc_x import EmotivEpocX
 import hid
+import sys
+import listener as ls
 
 def start_device_stream(device_path):
+    """Start the Emotiv device stream in a separate thread."""
     try:
         device = EmotivEpocX(device_path=device_path)
         device.main_loop()
@@ -28,3 +32,8 @@ if __name__ == "__main__":
     
     for thread in threads:
         thread.join()
+        
+    exit = 0
+    
+    if exit == 1:
+        sys.exit(0)

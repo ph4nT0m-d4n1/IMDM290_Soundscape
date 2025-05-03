@@ -3206,11 +3206,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449b4c1fd9ff0374997e12e8aa72a4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  full_freq: {fileID: 0}
-  gamma_freq: {fileID: 0}
-  alpha_freq: {fileID: 0}
-  beta_freq: {fileID: 0}
-  theta_freq: {fileID: 0}
   addresses:
   - /full-freq
   - /gamma
@@ -6739,7 +6734,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7522420479347556524, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
