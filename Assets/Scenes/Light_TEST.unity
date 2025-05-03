@@ -3448,11 +3448,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449b4c1fd9ff0374997e12e8aa72a4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  full_freq: {fileID: 0}
-  gamma_freq: {fileID: 0}
-  alpha_freq: {fileID: 0}
-  beta_freq: {fileID: 0}
-  theta_freq: {fileID: 0}
   addresses:
   - /full-freq
   - /gamma
@@ -5273,42 +5268,38 @@ MonoBehaviour:
   - light: {fileID: 403011272}
     brainwaveType: 0
     thresholdValue: 5
-    lowStateColor: {r: 0.5, g: 0.5, b: 0.5, a: 0}
+    lowStateColor: {r: 0, g: 0, b: 0, a: 0}
     lowStateIntensity: 0.5
-    highStateColor: {r: 1, g: 1, b: 1, a: 0}
-    highStateIntensity: 3
-    transitionBuffer: 1
-    brainwaveMultiplier: 1
+    highStateColor: {r: 0, g: 0, b: 0, a: 0}
+    highStateIntensity: 10
+    transitionBuffer: 0
     usePresetColors: 1
   - light: {fileID: 177572065}
     brainwaveType: 1
     thresholdValue: 5
-    lowStateColor: {r: 1, g: 0, b: 0.6666665, a: 0}
+    lowStateColor: {r: 0, g: 0, b: 0, a: 0}
     lowStateIntensity: 0.5
-    highStateColor: {r: 0.27, g: 0.585, b: 0.9, a: 0}
-    highStateIntensity: 3
+    highStateColor: {r: 0, g: 0, b: 0, a: 0}
+    highStateIntensity: 10
     transitionBuffer: 1
-    brainwaveMultiplier: 1
     usePresetColors: 1
   - light: {fileID: 1371424035}
     brainwaveType: 2
     thresholdValue: 5
-    lowStateColor: {r: 0.7, g: 0.4141667, b: 0.21000001, a: 0}
+    lowStateColor: {r: 0, g: 0, b: 0, a: 0}
     lowStateIntensity: 0.5
-    highStateColor: {r: 0.24000001, g: 0.8, b: 0.6133334, a: 0}
-    highStateIntensity: 3
+    highStateColor: {r: 0, g: 0, b: 0, a: 0}
+    highStateIntensity: 10
     transitionBuffer: 1
-    brainwaveMultiplier: 1
     usePresetColors: 1
   - light: {fileID: 311691583}
     brainwaveType: 3
     thresholdValue: 5
-    lowStateColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
+    lowStateColor: {r: 0, g: 0, b: 0, a: 0}
     lowStateIntensity: 0.5
-    highStateColor: {r: 1, g: 0.55, b: 0.100000024, a: 0}
-    highStateIntensity: 3
+    highStateColor: {r: 0, g: 0, b: 0, a: 0}
+    highStateIntensity: 10
     transitionBuffer: 1
-    brainwaveMultiplier: 1
     usePresetColors: 1
   useSmoothing: 1
   smoothingSpeed: 1

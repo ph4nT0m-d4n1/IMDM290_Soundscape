@@ -45,19 +45,19 @@ public class LightMap : MonoBehaviour
         Theta
     }
 
-    [SerializeField] private static BrainwaveLightMapping[] lightMappings;
+    [SerializeField] private BrainwaveLightMapping[] lightMappings;
     
     [Header("Smoothing")]
-    [SerializeField] private static bool useSmoothing = true; // whether to smooth the transitions
-    [Range(0.01f, 5f)] [SerializeField] private static float smoothingSpeed = 1.0f;
+    [SerializeField] private bool useSmoothing = true; // whether to smooth the transitions
+    [Range(0.01f, 5f)] [SerializeField] private float smoothingSpeed = 1.0f;
     
     // store current HSV values for smoothing
-    private static Dictionary<Light, Color> targetColors = new Dictionary<Light, Color>();
-    private static Dictionary<Light, float> targetIntensities = new Dictionary<Light, float>();
+    private Dictionary<Light, Color> targetColors = new Dictionary<Light, Color>();
+    private Dictionary<Light, float> targetIntensities = new Dictionary<Light, float>();
 
     private void Start()
     {
-        // Initialize dictionaries for smoothing
+        // initialize dictionaries for smoothing
         foreach (var mapping in lightMappings)
         {
             if (mapping.light != null)
@@ -113,7 +113,7 @@ public class LightMap : MonoBehaviour
         }
     }
 
-    private static void Update()
+    private void Update()
     {
         foreach (var mapping in lightMappings)
         {
@@ -170,7 +170,7 @@ public class LightMap : MonoBehaviour
     /// </summary>
     /// <param name="type">The type of brainwave to retrieve the value for.</param>
     /// <returns>The current value of the specified brainwave type.</returns>
-    private static float GetBrainwaveValue(BrainwaveType type)
+    private float GetBrainwaveValue(BrainwaveType type)
     {
         switch (type)
         {
