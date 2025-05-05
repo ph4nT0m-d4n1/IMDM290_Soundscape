@@ -14,6 +14,13 @@ import mne
 from pynput import keyboard
 from pythonosc import udp_client
 
+from pythonosc.dispatcher import Dispatcher
+from pythonosc import osc_server
+from threading import Thread
+
+
+import sys
+
 start_time = datetime.now()
 
 BUFFER_SIZE = 256*3 
@@ -55,7 +62,7 @@ def main():
     data_buffer = deque(maxlen=BUFFER_SIZE)
     analysis_interval = BUFFER_SIZE // 2
 
-    while True:
+    while server.running:
         sample, timestamp1 = inlets[0].pull_sample()
 
         if any (el < 10 for el in sample):
@@ -107,6 +114,55 @@ def get_power(signal):
     magnitudes = np.abs(signal)
     return float(np.sqrt(np.mean(magnitudes ** 2)))
 
+class ShutdownException(Exception):
+    """Custom exception for shutting down the OSC server."""
+    pass
+
+class OSC_Server():
+    def __init__(self, address:str, port:int=5005):
+        self.running = True
+        self.server_thread = None
+        self.address = address
+        self.port = port
+
+    def shutdown(self):
+        print(f"shutting down {__name__}...")
+        self.running = False
+        self.server_thread.join()
+        atexit._run_exitfuncs()
+
+    def run(self):
+        # start the OSC server
+        self.start_osc_server()
+        print("OSC_Server is running...")
+
+    def start_osc_server(self):
+        IP = "127.0.0.1"
+
+        dispatcher = Dispatcher()
+        dispatcher.map(self.address, self.handle_shutdown, "exit")
+
+        while True:  # loop until a valid port is found
+            try:
+                # attempt to create the OSC server
+                self.server = osc_server.ThreadingOSCUDPServer((IP, self.port), dispatcher)
+                print("OSC Server is up")
+                print(f"Listening for messages on {self.address}")
+                print(f"Listening for messages on port {self.port}")
+
+                # start the server in a separate thread
+                self.server_thread = Thread(target=self.server.serve_forever)
+                self.server_thread.start()
+                break  # exit the loop if successful
+            except OSError as e:
+                print(f"Error: {e}. Trying a different port...")
+                self.port += 1  # increment the port number and try again
+
+    def handle_shutdown(self, unused_addr, args, int_value):
+        if int_value == 0:
+            print(f"Exit command received with value {int_value}, shutting down {__name__}.")
+            self.shutdown()  # call the shutdown method
+            
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -115,10 +171,12 @@ if __name__ == "__main__":
     parser.add_argument("--folderpath", type=str, default="", help="The folder where to save the trial results.")
     args = parser.parse_args()
 
-    # HARDCODED_MAIN_RESULTS_PATH = "User-study"
-    # result_folder_path = os.path.join(HARDCODED_MAIN_RESULTS_PATH,args.folderpath)
-    # os.makedirs(result_folder_path,exist_ok=True)
+    server = OSC_Server("/bandOSC_exit", 5006)
 
-    client = udp_client.SimpleUDPClient(args.ip, args.port)
-    
-    main()
+    try:
+        server.run()
+        client = udp_client.SimpleUDPClient(args.ip, args.port)
+        main()
+    except ShutdownException as e:  # catch the custom exception
+        print(e)  # print the exception message
+        sys.exit(0)

@@ -1,30 +1,52 @@
-"""This program listens to several addresses
-"""
 from pythonosc.dispatcher import Dispatcher
 from pythonosc import osc_server
 
-IP = "127.0.0.1"
-RECEIVE_PORT = 5005
+import sys
+from threading import Thread
 
-def test_exit(unused_addr, args, int_value):
-    print(f"Received value: {int_value}")
-    if int_value == 3:
-        print(f"Exit command received with value {int_value}, shutting down OtherScript.")
+class OSC_Server():
+    def __init__(self, address:str):
+        self.running = True
+        self.server_thread = None
+        self.address = address
 
-if __name__ == "__main__":
-    address = "/test/1"
-    dispatcher = Dispatcher()
-    dispatcher.map(address, test_exit, "test")
+    def shutdown(self):
+        print(f"shutting down {__name__}...")
+        self.running = False
+        print(f"{__name__} has been shut down.")
 
-    server = osc_server.ThreadingOSCUDPServer((IP, RECEIVE_PORT), dispatcher)
-    
-    print("Server is up")
-    print(f"IP : {IP}")
-    print(f"Receiving Port : {RECEIVE_PORT}")
-    print(f"Listening for messages on '{address}'")
-    print("Send an int value of 3 to this address to shut down OtherScript")
-    
-    server.serve_forever()
+    def run(self):
+        # start the OSC server
+        self.start_osc_server()
+        print("OSC_Server is running...")
+
+    def start_osc_server(self):
+        IP = "127.0.0.1"
+        RECEIVE_PORT = 5005
+
+        dispatcher = Dispatcher()
+        dispatcher.map(self.address, self.handle_shutdown, "exit")
+
+        while True: # loop until a valid port is found
+            try:
+                # attempt to create the OSC server
+                self.server = osc_server.ThreadingOSCUDPServer((IP, RECEIVE_PORT), dispatcher)
+                print("OSC Server is up")
+                print(f"Listening for messages on {self.address}")
+
+                # start the server in a separate thread
+                self.server_thread = Thread(target=self.server.serve_forever)
+                self.server_thread.start()
+                break  # exit the loop if successful
+            except OSError as e:
+                print(f"Error: {e}. Trying a different port...")
+                RECEIVE_PORT += 1  # increment the port number and try again
+
+
+    def handle_shutdown(self, unused_addr, args, int_value):
+        if int_value == 0:
+            print(f"Exit command received with value {int_value}, shutting down {__name__}.")
+            self.shutdown()  # call the shutdown method
 
 
 
