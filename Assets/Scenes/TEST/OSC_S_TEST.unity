@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 164772267}
   - component: {fileID: 164772266}
   m_Layer: 0
-  m_Name: OSC 2
+  m_Name: band OSC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1051,7 +1051,6 @@ GameObject:
   - component: {fileID: 1380417998}
   - component: {fileID: 1380418000}
   - component: {fileID: 1380418001}
-  - component: {fileID: 1380418002}
   m_Layer: 0
   m_Name: Script Runner
   m_TagString: Untagged
@@ -1081,30 +1080,16 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1380417997}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c35b90893bd69ef4f93ca1e2d9ef03b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pythonPath: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
-  mainScript: Assets/Scripts/Python-OSC/sender.py
-  secondaryScript: 
+  isPythonInPath: 1
+  mainScript: Assets\IMD_EEG\main.py
+  secondaryScript: Assets\IMD_EEG\tools\band-OSC.py
 --- !u!114 &1380418001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1380417997}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd84a52640ba6fa459f2f523deabac9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  runButton: {fileID: 1667883350}
-  exitButton: {fileID: 1692088264}
-  runPyScript: {fileID: 1380418000}
---- !u!114 &1380418002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1113,12 +1098,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1380417997}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e60b3efb1c41444bac687e5d814957c, type: 3}
+  m_Script: {fileID: 11500000, guid: fd84a52640ba6fa459f2f523deabac9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transmitter: {fileID: 1504570907}
-  transmitter2: {fileID: 164772266}
-  address2: /bandOSC_exit
+  runButton: {fileID: 1667883350}
+  exitButton: {fileID: 1692088264}
+  runPyScript: {fileID: 1380418000}
+  mainTransmitter: {fileID: 1504570907}
+  bandTransmitter: {fileID: 164772266}
 --- !u!1 &1504570904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1130,7 +1117,7 @@ GameObject:
   - component: {fileID: 1504570906}
   - component: {fileID: 1504570907}
   m_Layer: 0
-  m_Name: OSC
+  m_Name: main OSC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

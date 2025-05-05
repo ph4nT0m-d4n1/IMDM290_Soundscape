@@ -28,10 +28,10 @@ def start_device_stream(device_path):
 if __name__ == "__main__":
     emotiv_devices = [device for device in hid.enumerate() if device['manufacturer_string'] == 'Emotiv' and device['usage'] == 2]
 
-    server = ls.OSC_Server("/main_exit")
+    ls_server = ls.OSC_Server("/main_exit")
     
     try:
-        server.run()
+        ls_server.run()
         
         threads = []
         for device in emotiv_devices:
@@ -45,7 +45,8 @@ if __name__ == "__main__":
             thread.join()
     except ls.ShutdownException as e:  # catch the custom exception
         print(e)  # print the exception message
+    finally:
+        for thread in threads:
+            thread.join()
         
-    sys.exit(0)
-    
-
+    sys.exit(0)  # ensure the script exits cleanly

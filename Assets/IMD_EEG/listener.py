@@ -1,7 +1,5 @@
 from pythonosc.dispatcher import Dispatcher
 from pythonosc import osc_server
-
-import sys
 from threading import Thread
 
 class ShutdownException(Exception):
@@ -16,15 +14,13 @@ class OSC_Server():
         self.port = port
 
     def shutdown(self):
-        print(f"shutting down {__name__}...")
+        print(f"shutting down...")
         self.running = False
         self.server.shutdown()
         self.server_thread.join()
-        raise ShutdownException("Server shutdown requested.")  # raise the custom exception
 
     def run(self):
-        # start the OSC server
-        self.start_osc_server()
+        self.start_osc_server() # start the OSC server
         print("OSC_Server is running...")
 
     def start_osc_server(self):
@@ -35,15 +31,13 @@ class OSC_Server():
 
         while True:  # loop until a valid port is found
             try:
-                # attempt to create the OSC server
-                self.server = osc_server.ThreadingOSCUDPServer((IP, self.port), dispatcher)
-                print("OSC Server is up")
-                print(f"Listening for messages on {self.address}")
-                print(f"Listening for messages on port {self.port}")
-
-                # start the server in a separate thread
-                self.server_thread = Thread(target=self.server.serve_forever)
+                self.server = osc_server.ThreadingOSCUDPServer((IP, self.port), dispatcher) # attempt to create the OSC server
+                
+                self.server_thread = Thread(target=self.server.serve_forever) # start the server in a separate thread
                 self.server_thread.start()
+                
+                print("OSC Listener Server is up")
+                print(f"Listening for messages on port {self.port} and address {self.address}")
                 break  # exit the loop if successful
             except OSError as e:
                 print(f"Error: {e}. Trying a different port...")

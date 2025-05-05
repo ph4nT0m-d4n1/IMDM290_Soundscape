@@ -65,7 +65,7 @@ def main():
     data_buffer = deque(maxlen=BUFFER_SIZE)
     analysis_interval = BUFFER_SIZE // 2
 
-    while server.running:
+    while ls_server.running:
         sample, timestamp1 = inlets[0].pull_sample()
 
         if any (el < 10 for el in sample):
@@ -125,10 +125,10 @@ if __name__ == "__main__":
     parser.add_argument("--folderpath", type=str, default="", help="The folder where to save the trial results.")
     args = parser.parse_args()
 
-    server = ls.OSC_Server("/bandOSC_exit", 5006)
+    ls_server = ls.OSC_Server("/bandOSC_exit", 5006)
 
     try:
-        server.run()
+        ls_server.run()
         client = udp_client.SimpleUDPClient(args.ip, args.port)
         main()
     except ls.ShutdownException as e:  # catch the custom exception
