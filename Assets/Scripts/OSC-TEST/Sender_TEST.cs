@@ -1,12 +1,11 @@
 using UnityEngine;
 using extOSC;
-using TMPro;
 
 public class Sender_TEST : MonoBehaviour
 {
-    [SerializeField] TMP_InputField input;
     public OSCTransmitter transmitter;
-    public string address = "/SentMessage";
+    private string address = "/test/1";
+    private bool hasTriggeredShutdown = false;
 
     void Start()
     {
@@ -19,12 +18,23 @@ public class Sender_TEST : MonoBehaviour
         transmitter.RemoteHost = "127.0.0.1";
     }
 
-    public void SentMessage()
+    public void TriggerServerShutdown()
     {
-        var message = new OSCMessage("/SentMessage");
-        message.AddValue(OSCValue.String(input.text));
+        if (!hasTriggeredShutdown)
+        {
+            var message = new OSCMessage(address);
+            message.AddValue(OSCValue.Int(3));
+            transmitter.Send(message);
+            Debug.Log("Shutdown message sent to OSC server");
+            hasTriggeredShutdown = true;
+        }
+    }
 
-        transmitter.Send(message);    
-        Debug.Log($"Message Sent : {input.text}");
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && !hasTriggeredShutdown)
+        {
+            TriggerServerShutdown();
+        }
     }
 }

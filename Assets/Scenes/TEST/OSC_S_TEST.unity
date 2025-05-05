@@ -1060,9 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e60b3efb1c41444bac687e5d814957c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: {fileID: 334621671}
   transmitter: {fileID: 1504570907}
-  address: /SentMessage
 --- !u!1 &1504570904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1112,12 +1110,12 @@ MonoBehaviour:
   _mapBundle: {fileID: 0}
   _workInEditor: 0
   _localHostMode: 0
-  _localPortMode: 0
+  _localPortMode: 2
   _localReceiver: {fileID: 0}
-  _localHost: 10.173.118.183
+  _localHost: 10.104.173.176
   _localPort: 7000
   _remoteHost: 127.0.0.1
-  _remotePort: 5005
+  _remotePort: 7000
   _useBundle: 0
 --- !u!1 &1667883348
 GameObject:
