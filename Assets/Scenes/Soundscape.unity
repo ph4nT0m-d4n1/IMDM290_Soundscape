@@ -700,6 +700,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7fa81b799433e4cd8a722f65a3b36358, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 7fa81b799433e4cd8a722f65a3b36358, type: 3}
       propertyPath: m_Name
       value: Soft_6
@@ -797,6 +801,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -5.7230225
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3168a852f702848aeb9fc0c38abace61, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 3168a852f702848aeb9fc0c38abace61, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_4 (1)
@@ -846,7 +854,7 @@ GameObject:
   - component: {fileID: 47176305}
   - component: {fileID: 47176306}
   m_Layer: 0
-  m_Name: Gamme Light
+  m_Name: Gamma Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -949,7 +957,7 @@ Transform:
   m_GameObject: {fileID: 47176304}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6532815, y: 0.27059805, z: 0.27059805, w: 0.6532815}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -5, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -983,7 +991,7 @@ Transform:
   m_GameObject: {fileID: 68694358}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1665,6 +1673,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: ac40ac04bcca343a8ab7c27ef7c15960, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: ac40ac04bcca343a8ab7c27ef7c15960, type: 3}
       propertyPath: m_Name
       value: Sharp_Shards_3
@@ -1762,6 +1774,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 76fa5c754095a497796408a102ac4222, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 76fa5c754095a497796408a102ac4222, type: 3}
       propertyPath: m_Name
       value: Sharp_Shards_5
@@ -1871,6 +1887,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 052c793eec6114be78edd6c7dcc8447f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 052c793eec6114be78edd6c7dcc8447f, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_6
@@ -1968,6 +1988,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3168a852f702848aeb9fc0c38abace61, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 3168a852f702848aeb9fc0c38abace61, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_4
@@ -2065,6 +2089,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -161.53
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9fc616d35f677467597379eede118f79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fc616d35f677467597379eede118f79, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_10 (1)
@@ -2162,6 +2190,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -167.101
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9e46dd34e9e2841c68aec2e1ff4adb19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 9e46dd34e9e2841c68aec2e1ff4adb19, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_5 (1)
@@ -2780,6 +2812,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -260.732
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 004c7d0ab9c714272a6c2ba52015c9dd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 004c7d0ab9c714272a6c2ba52015c9dd, type: 3}
       propertyPath: m_Name
       value: Soft_5 (1)
@@ -2834,7 +2870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &403011272
 Light:
   m_ObjectHideFlags: 0
@@ -2909,11 +2945,11 @@ Transform:
   m_GameObject: {fileID: 403011271}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -8.878069, y: 1.0397079, z: 4.294792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2021479489}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &403011274
 MonoBehaviour:
@@ -2998,6 +3034,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -180.747
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9fc616d35f677467597379eede118f79, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fc616d35f677467597379eede118f79, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_10
@@ -3224,6 +3264,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.09399414
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 28a825e227010460dacff25fca955570, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 28a825e227010460dacff25fca955570, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_2
@@ -3321,6 +3365,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 5.027
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 052c793eec6114be78edd6c7dcc8447f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 052c793eec6114be78edd6c7dcc8447f, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_6 (1)
@@ -3418,6 +3466,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 186.959
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9840faca18c164868a13b4fc5784c7a6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 9840faca18c164868a13b4fc5784c7a6, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_3 (1)
@@ -3507,6 +3559,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e1f30d90534164980ac528296cde664a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: e1f30d90534164980ac528296cde664a, type: 3}
       propertyPath: m_Name
       value: Sharp_Shards_8
@@ -4137,6 +4193,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -157.354
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4609d1a19363e48eab4c2f72fc0fdc19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 4609d1a19363e48eab4c2f72fc0fdc19, type: 3}
       propertyPath: m_Name
       value: Soft_7 (1)
@@ -4301,6 +4361,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -188.691
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d0a5a64459ec24638a13bcf1a4940d6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: d0a5a64459ec24638a13bcf1a4940d6f, type: 3}
       propertyPath: m_Name
       value: Soft_4 (1)
@@ -4398,6 +4462,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 004c7d0ab9c714272a6c2ba52015c9dd, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 004c7d0ab9c714272a6c2ba52015c9dd, type: 3}
       propertyPath: m_Name
       value: Soft_5
@@ -4487,6 +4555,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 377835631865979511, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
       propertyPath: m_Name
       value: Dome
@@ -4530,13 +4602,42 @@ PrefabInstance:
     - {fileID: 7869873546869171050, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
     - {fileID: -674449036139524865, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 377835631865979511, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 583794243}
   m_SourcePrefab: {fileID: 100100000, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
 --- !u!4 &583794241 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
   m_PrefabInstance: {fileID: 583794240}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &583794242 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 377835631865979511, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
+  m_PrefabInstance: {fileID: 583794240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &583794243
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583794242}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 0.0099
+  m_Center: {x: 0, y: -1.7912776e-17, z: -0.0009}
 --- !u!1 &593862346
 GameObject:
   m_ObjectHideFlags: 0
@@ -4718,18 +4819,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 650455404}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 4.294792}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1139701499}
   - {fileID: 1627929935}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2021479489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -8.878069, y: -1.9602921}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &650455409
@@ -4745,6 +4846,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextButton: {fileID: 1627929934}
+  runPy: {fileID: 0}
+  mainTransmitter: {fileID: 0}
+  bandTransmitter: {fileID: 0}
 --- !u!1001 &752992163
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4805,6 +4909,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 154.376
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e506114c41ace4eeba198293c93470c6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: e506114c41ace4eeba198293c93470c6, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_11 (1)
@@ -4890,6 +4998,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: db7e5e9f86394460f80eb70bf7caffd3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: db7e5e9f86394460f80eb70bf7caffd3, type: 3}
       propertyPath: m_Name
       value: Sharp_Shards_9
@@ -4955,7 +5067,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &771265407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5016,7 +5128,7 @@ Transform:
   m_GameObject: {fileID: 771265406}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 8.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5086,6 +5198,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 10.830002
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e3050458ef6e0415ca51a2a8126d8e8a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: e3050458ef6e0415ca51a2a8126d8e8a, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_7 (1)
@@ -5704,6 +5820,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c8093a03eacc94580ad405e7e3b3537c, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: c8093a03eacc94580ad405e7e3b3537c, type: 3}
       propertyPath: m_Name
       value: Sharp_6
@@ -5823,6 +5943,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 38eb929fc01904da6be539bd1455fd41, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 38eb929fc01904da6be539bd1455fd41, type: 3}
       propertyPath: m_Name
       value: Sharp_3
@@ -5950,6 +6074,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 8.794006
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c7195ac4339d94378824140a7241615d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: c7195ac4339d94378824140a7241615d, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_9 (1)
@@ -6004,7 +6132,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &957239020
 Transform:
   m_ObjectHideFlags: 0
@@ -6032,8 +6160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35b90893bd69ef4f93ca1e2d9ef03b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pythonPath: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
-  isPythonInPath: 0
+  pythonPath: Python
+  isPythonInPath: 1
   mainScript: Assets/IMD_EEG/main.py
   secondaryScript: Assets/IMD_EEG/tools/band-OSC.py
 --- !u!114 &957239022
@@ -6139,10 +6267,22 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3541131790296686809, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
+      propertyPath: runPy
+      value: 
+      objectReference: {fileID: 957239021}
+    - target: {fileID: 3541131790296686809, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
+      propertyPath: bandTransmitter
+      value: 
+      objectReference: {fileID: 1582545477}
+    - target: {fileID: 3541131790296686809, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
+      propertyPath: mainTransmitter
+      value: 
+      objectReference: {fileID: 2023125509}
     - target: {fileID: 5919289533246874147, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_Camera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 68694362}
     - target: {fileID: 5919289533246874147, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_RenderMode
       value: 2
@@ -6161,31 +6301,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.76
+      value: 6.87
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -2.63
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.26
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6193,7 +6333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -6438,7 +6578,7 @@ GameObject:
   - component: {fileID: 1090793690}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6469,7 +6609,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 925c976156681490991396d36111ffc0, type: 3}
   m_Resource: {fileID: 8300000, guid: 925c976156681490991396d36111ffc0, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -6633,7 +6773,7 @@ Transform:
   m_GameObject: {fileID: 1090793689}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.8, y: 0, z: -4.4}
+  m_LocalPosition: {x: 1.69, y: 1.25, z: -6.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6974,6 +7114,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e3050458ef6e0415ca51a2a8126d8e8a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: e3050458ef6e0415ca51a2a8126d8e8a, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_7
@@ -7071,6 +7215,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 154.376
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3e11b2c2885024837a15372a0bc045bb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 3e11b2c2885024837a15372a0bc045bb, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_1 (1)
@@ -7134,7 +7282,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eee7660e99cf4c708f454f425ab83ce, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.48
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9eee7660e99cf4c708f454f425ab83ce, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7168,10 +7316,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5066493223152278515, guid: 9eee7660e99cf4c708f454f425ab83ce, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 9eee7660e99cf4c708f454f425ab83ce, type: 3}
       propertyPath: m_Name
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 5447331667604542231, guid: 9eee7660e99cf4c708f454f425ab83ce, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
+    - target: {fileID: 5447331667604542231, guid: 9eee7660e99cf4c708f454f425ab83ce, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 65702495048144492, guid: 9eee7660e99cf4c708f454f425ab83ce, type: 3}
@@ -7842,6 +8002,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 85bbc63527c434ebb9daaf6b925febc9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 85bbc63527c434ebb9daaf6b925febc9, type: 3}
       propertyPath: m_Name
       value: Sharp_Shards_4
@@ -7951,6 +8115,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9840faca18c164868a13b4fc5784c7a6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 9840faca18c164868a13b4fc5784c7a6, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_3
@@ -8040,6 +8208,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bce16bcba6267463faf01765b3f451a1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: bce16bcba6267463faf01765b3f451a1, type: 3}
       propertyPath: m_Name
       value: Sharp_1
@@ -8642,7 +8814,7 @@ GameObject:
   - component: {fileID: 1382871049}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: MainCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8714,12 +8886,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1382871045}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.878069, y: -0.9602921, z: -5.705208}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2021479489}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1382871049
 MonoBehaviour:
@@ -8825,6 +8997,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c7195ac4339d94378824140a7241615d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: c7195ac4339d94378824140a7241615d, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_9
@@ -8918,6 +9094,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: bccd4fcecceff43acb4c5184efc015b5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: bccd4fcecceff43acb4c5184efc015b5, type: 3}
       propertyPath: m_Name
       value: Sharp_Shards_2
@@ -9027,6 +9207,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -7.945984
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 752fdc0aa284546f391f4166c1f087ff, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 752fdc0aa284546f391f4166c1f087ff, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_8
@@ -9124,6 +9308,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fb5bc930fbf1443618d9aac7643207b5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: fb5bc930fbf1443618d9aac7643207b5, type: 3}
       propertyPath: m_Name
       value: Soft_1
@@ -9276,7 +9464,7 @@ Transform:
   m_GameObject: {fileID: 1464183306}
   serializedVersion: 2
   m_LocalRotation: {x: 0.27059805, y: 0.6532815, z: -0.6532815, w: -0.27059805}
-  m_LocalPosition: {x: 6, y: 3, z: 0}
+  m_LocalPosition: {x: 11, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9342,6 +9530,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -7.0369873
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 28a825e227010460dacff25fca955570, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 28a825e227010460dacff25fca955570, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_2 (1)
@@ -9439,6 +9631,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 315.264
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 7fa81b799433e4cd8a722f65a3b36358, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 7fa81b799433e4cd8a722f65a3b36358, type: 3}
       propertyPath: m_Name
       value: Soft_6 (1)
@@ -9536,6 +9732,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: d0a5a64459ec24638a13bcf1a4940d6f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: d0a5a64459ec24638a13bcf1a4940d6f, type: 3}
       propertyPath: m_Name
       value: Soft_4
@@ -9743,6 +9943,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -187.656
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 38a62decfcb9d4392a63f10efed5d9de, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 38a62decfcb9d4392a63f10efed5d9de, type: 3}
       propertyPath: m_Name
       value: Soft_2 (1)
@@ -9832,6 +10036,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: f5821b32b814a402297582c97d096de3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: f5821b32b814a402297582c97d096de3, type: 3}
       propertyPath: m_Name
       value: Sharp_Shards_10
@@ -10418,7 +10626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1582545476
 Transform:
   m_ObjectHideFlags: 0
@@ -10652,6 +10860,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 4609d1a19363e48eab4c2f72fc0fdc19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 4609d1a19363e48eab4c2f72fc0fdc19, type: 3}
       propertyPath: m_Name
       value: Soft_7
@@ -10741,6 +10953,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 74b65e3a4b7044433bda61bd08f1b40d, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 74b65e3a4b7044433bda61bd08f1b40d, type: 3}
       propertyPath: m_Name
       value: Sharp_7
@@ -10868,6 +11084,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -31.945007
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 752fdc0aa284546f391f4166c1f087ff, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 752fdc0aa284546f391f4166c1f087ff, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_8 (1)
@@ -10961,6 +11181,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 344b9b4eb36b14b2c9e45eb2adb3c07f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 344b9b4eb36b14b2c9e45eb2adb3c07f, type: 3}
       propertyPath: m_Name
       value: Sharp_4
@@ -11088,6 +11312,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -201.421
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8e3a9869455d8482a9c982af38eba73f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 8e3a9869455d8482a9c982af38eba73f, type: 3}
       propertyPath: m_Name
       value: Soft_3 (1)
@@ -11181,6 +11409,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 720cb040514444386b423d6dac88f451, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 720cb040514444386b423d6dac88f451, type: 3}
       propertyPath: m_Name
       value: Sharp_Shards_7
@@ -11290,6 +11522,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8e3a9869455d8482a9c982af38eba73f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 8e3a9869455d8482a9c982af38eba73f, type: 3}
       propertyPath: m_Name
       value: Soft_3
@@ -11379,6 +11615,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 8233d5f6ff14d4f908487f25dd47466a, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 8233d5f6ff14d4f908487f25dd47466a, type: 3}
       propertyPath: m_Name
       value: Sharp_Shards_6
@@ -11592,7 +11832,7 @@ Transform:
   m_GameObject: {fileID: 1808123669}
   serializedVersion: 2
   m_LocalRotation: {x: 0.6532815, y: 0.6532815, z: -0.27059805, w: 0.27059805}
-  m_LocalPosition: {x: 3, y: 3, z: 3}
+  m_LocalPosition: {x: 3, y: 3, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11658,6 +11898,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 111.262
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 3e11b2c2885024837a15372a0bc045bb, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 3e11b2c2885024837a15372a0bc045bb, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_1
@@ -11755,6 +11999,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 110.698
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e506114c41ace4eeba198293c93470c6, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: e506114c41ace4eeba198293c93470c6, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_11
@@ -11852,6 +12100,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e941f5b115af04ace8f067637989d8c8, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: e941f5b115af04ace8f067637989d8c8, type: 3}
       propertyPath: m_Name
       value: Sharp_Shards_11
@@ -12505,6 +12757,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: c6a4bad840f79409799e8f1624279622, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: c6a4bad840f79409799e8f1624279622, type: 3}
       propertyPath: m_Name
       value: Sharp_2
@@ -12632,6 +12888,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 9e46dd34e9e2841c68aec2e1ff4adb19, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 9e46dd34e9e2841c68aec2e1ff4adb19, type: 3}
       propertyPath: m_Name
       value: Soft_Shards_5
@@ -12729,6 +12989,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 38a62decfcb9d4392a63f10efed5d9de, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 38a62decfcb9d4392a63f10efed5d9de, type: 3}
       propertyPath: m_Name
       value: Soft_2
@@ -12826,6 +13090,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -17.919
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: fb5bc930fbf1443618d9aac7643207b5, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: fb5bc930fbf1443618d9aac7643207b5, type: 3}
       propertyPath: m_Name
       value: Soft_1 (1)
@@ -12899,6 +13167,40 @@ Transform:
   - {fileID: 957239020}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2021479488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2021479489}
+  m_Layer: 0
+  m_Name: Do Not Activate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2021479489
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021479488}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.878069, y: 1.9602921, z: -4.294792}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 650455408}
+  - {fileID: 1382871048}
+  - {fileID: 403011273}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2023125506
 GameObject:
   m_ObjectHideFlags: 0
@@ -12916,7 +13218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2023125507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13035,6 +13337,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 689b32c6ac45e470598096b9c4969446, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: 689b32c6ac45e470598096b9c4969446, type: 3}
       propertyPath: m_Name
       value: Sharp_Shards_1
@@ -13661,6 +13967,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: e6a2c33976b6e482791fcb7bacf00383, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 24e36e6ef9d304c37aa2a5080649f5a5, type: 2}
     - target: {fileID: 919132149155446097, guid: e6a2c33976b6e482791fcb7bacf00383, type: 3}
       propertyPath: m_Name
       value: Sharp_5
@@ -13843,7 +14153,7 @@ Transform:
   m_GameObject: {fileID: 2134244835}
   serializedVersion: 2
   m_LocalRotation: {x: 0.27059805, y: -0.27059805, z: 0.6532815, w: 0.6532815}
-  m_LocalPosition: {x: 3, y: 3, z: -4}
+  m_LocalPosition: {x: 3, y: 3, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13853,12 +14163,10 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1382871048}
-  - {fileID: 403011273}
-  - {fileID: 650455408}
   - {fileID: 422063070}
   - {fileID: 1075788685}
   - {fileID: 649204816}
   - {fileID: 771265408}
   - {fileID: 1979470536}
   - {fileID: 1090793696}
+  - {fileID: 2021479489}

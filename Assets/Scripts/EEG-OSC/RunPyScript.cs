@@ -18,7 +18,7 @@ public class RunPyScript : MonoBehaviour
     // sample mac python3 path
     // /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
     [SerializeField] private string pythonPath = "Python"; 
-    public bool isPythonInPath = false; // set to true if Python is in your PATH
+    public bool isPythonInPath = true; // leave as true if Python is in your PATH (disable for macOS)
 
     [Header("Script Path")]
     [SerializeField] private string mainScript = "Assets/Scripts/Python-OSC/sender.py"; // relative path to the Python script to be executed
@@ -35,7 +35,7 @@ public class RunPyScript : MonoBehaviour
         {
             pythonPath = "Python"; // use "python3" if on macOS
         }
-        else if (isPythonInPath == false)
+        else if (!isPythonInPath)
         {
             pythonPath = "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"; // replace with your Python path
         }

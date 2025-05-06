@@ -102,11 +102,11 @@ public class PyButton : MonoBehaviour
         runPyScript.KillProcess();
     }
 
-    private void OnDestroy()
-    {
-        if (runButton != null)
-        {
-            runButton.onClick.RemoveListener(OnClickRun);
-        }
-    }
+    // private void OnDestroy()
+    // {
+    //     if (runButton != null)
+    //     {
+    //         runButton.onClick.RemoveListener(OnClickRun);
+    //     }
+    // }
 }

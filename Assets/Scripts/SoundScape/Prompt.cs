@@ -4,6 +4,8 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using extOSC;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// Manages a guided prompt system for a Soundscape Therapy application.
@@ -12,15 +14,30 @@ using UnityEngine.UI;
 public class Prompt : MonoBehaviour
 {
     #region class variables
+
+    [Header("Prompt System")]
     [SerializeField] GameObject nextButton; //reference to the game object containing the button
 
-    public static int counter; //counter to keep track of the current prompt index
+    [HideInInspector] public static int counter; //counter to keep track of the current prompt index
     public static List<int> responses = new List<int>(); //list to store user responses
 
     static TMP_Text promptText; //prompt text being displayed
     static bool skip; //indicates whether the current question is being skipped
     static bool startFade; //determines when to run the fadeText animation coroutine
     static bool userInput; //determines whether the user can provide input at the moment
+
+    [Header("RunPy")]
+    [SerializeField] private RunPyScript runPy; //reference to the game object containing the RunPyScript component
+
+    [Header("OSC Settings")]
+    public OSCTransmitter mainTransmitter;
+    public OSCTransmitter bandTransmitter;
+    string main_address = "/main_exit";
+    string band_address = "/bandOSC_exit";
+    bool hasTriggeredShutdown = false;
+
+    string ipAddress = "127.0.0.1";
+
 
     #endregion
 
@@ -65,6 +82,8 @@ public class Prompt : MonoBehaviour
         startFade = false;
         userInput = true; // allow user input at the start
         nextButton.SetActive(true); // ensure next button is visible at the start
+
+        OSC_ServerInit();
     }
     
     void Start()
@@ -72,6 +91,10 @@ public class Prompt : MonoBehaviour
         // initialize prompt system
         promptText = GameObject.Find("Prompt Text").GetComponent<TMP_Text>();
         promptText.text = prompts[counter];
+
+        // initialize RunPyScript component
+        runPy.RunPythonScript();
+        hasTriggeredShutdown = false; // reset the shutdown flag when the script is run
     }
 
     void Update()
@@ -104,7 +127,26 @@ public class Prompt : MonoBehaviour
             }
             
         }
-        
+
+        if (counter == prompts.Length && !hasTriggeredShutdown) // check if the last prompt is reached
+        {
+            if (Input.GetKeyDown(KeyCode.Q)) // allow user to quit python processes
+            {
+                var band_message = new OSCMessage(band_address);
+                band_message.AddValue(OSCValue.Int(0));
+                bandTransmitter.Send(band_message);
+                Debug.Log("emotiv band-OSC shutdown message sent");
+
+                var main_message = new OSCMessage(main_address);
+                main_message.AddValue(OSCValue.Int(0));
+                mainTransmitter.Send(main_message);
+                Debug.Log("emotiv main shutdown message sent");
+                
+                hasTriggeredShutdown = true;
+                
+                runPy.KillProcess();
+            }
+        }
     }
 
 
@@ -237,6 +279,32 @@ public class Prompt : MonoBehaviour
         }
 
         userInput = true; // re-enable user input after fade
+    }
+
+    #endregion
+
+    #region OSC methods
+    /// <summary>
+    /// Initializes the OSC server settings.
+    /// Sets up the main and band transmitters with the specified IP address and ports.
+    /// </summary>
+    void OSC_ServerInit()
+    {
+        if (mainTransmitter == null)
+        {
+            mainTransmitter = gameObject.AddComponent<OSCTransmitter>();
+
+            if (bandTransmitter == null)
+            {
+                bandTransmitter = gameObject.AddComponent<OSCTransmitter>();
+            }
+        }
+
+        mainTransmitter.RemoteHost = ipAddress;
+        mainTransmitter.RemotePort = 5005;
+
+        bandTransmitter.RemoteHost = ipAddress;
+        bandTransmitter.RemotePort = 5006;
     }
 
     #endregion
