@@ -11,17 +11,19 @@ using Debug = UnityEngine.Debug;
 /// </summary>
 public class RunPyScript : MonoBehaviour
 {
-    #region global reference variables
+    #region global variables
 
+    [Header("Python Executable")]
     // path to your Python executable. If Python is in your PATH, you can just use "Python" or "python3"
-    [SerializeField] private string pythonPath = "Python"; 
-
     // sample mac python3 path
-    // "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"
+    // /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+    [SerializeField] private string pythonPath = "Python"; 
+    public bool isPythonInPath = false; // set to true if Python is in your PATH
 
-    [SerializeField] private string mainScript = "Assets/Scripts/Python-OSC/sender.py"; //path to the Python script to be executed
+    [Header("Script Path")]
+    [SerializeField] private string mainScript = "Assets/Scripts/Python-OSC/sender.py"; // relative path to the Python script to be executed
 
-    [SerializeField] private string secondaryScript = null; // path to the secondary Python script to be executed, if any
+    [SerializeField] private string secondaryScript = null; // relative path to the secondary Python script to be executed, if any
     private int main_processId = 0; //process ID of the main Python script
     private int second_processId = 0; //process ID of the secondary Python script
 
@@ -29,18 +31,13 @@ public class RunPyScript : MonoBehaviour
 
     void Start()
     {
-        // check if the Python executable is available
-        if (string.IsNullOrEmpty(pythonPath))
+        if (isPythonInPath)
         {
-            Debug.LogError("Python path is not set.");
-            return;
+            pythonPath = "Python"; // use "python3" if on macOS
         }
-
-        // check if the script path is valid
-        if (string.IsNullOrEmpty(mainScript))
+        else if (isPythonInPath == false)
         {
-            Debug.LogError("Script path is not set.");
-            return;
+            pythonPath = "/Library/Frameworks/Python.framework/Versions/3.12/bin/python3"; // replace with your Python path
         }
     }
 
@@ -53,7 +50,6 @@ public class RunPyScript : MonoBehaviour
             // run the secondary script if provided
             _ = RunScript(secondaryScript);
         }
-
     }
 
     /// <summary>
@@ -114,10 +110,10 @@ public class RunPyScript : MonoBehaviour
 
             // log the process output to Unity's console
             Debug.Log("Process Output:\n" + output);
-            if (!string.IsNullOrEmpty(error))
-            {
-                Debug.LogError("Process Error:\n" + error);
-            }
+            // if (!string.IsNullOrEmpty(error))
+            // {
+            //     Debug.LogError("Process Error:\n" + error);
+            // }
 
             Debug.Log("Process exited with exit code: " + process.ExitCode);
         }
@@ -129,48 +125,34 @@ public class RunPyScript : MonoBehaviour
     }
 
     /// <summary>
-    /// Terminates the running Python process if it is still active.
-    /// This method is not very graceful, but it works.
+    /// Terminates the main Python process if it is still active.
     /// </summary>
     public void KillProcess()
     {
-        if (second_processId > 0)
+        if (main_processId > 0) // the main process is the only one that continues running
         {
             try
             {
-                Process process = Process.GetProcessById(second_processId);
+                Process process = Process.GetProcessById(main_processId);
+                process.WaitForExit(1500); // wait for a few seconds
                 if (!process.HasExited)
                 {
                     process.Kill();
                     Debug.Log("Process killed.");
                 }
+                main_processId = 0; // reset the process ID
+                second_processId = 0; // reset the secondary process ID
             }
             catch (System.Exception exception)
             {
                 Debug.LogError("Failed to kill the process: " + exception.Message);
-            }
-
-            if (main_processId > 0)
-            {
-                try
-                {
-                    Process process = Process.GetProcessById(main_processId);
-                    if (!process.HasExited)
-                    {
-                        process.Kill();
-                        Debug.Log("Process killed.");
-                    }
-                }
-                catch (System.Exception exception)
-                {
-                    Debug.LogError("Failed to kill the process: " + exception.Message);
-                }
             }
         }
         else
         {
             Debug.LogWarning("No process to kill.");
         }
-        
+
+
     }
 }

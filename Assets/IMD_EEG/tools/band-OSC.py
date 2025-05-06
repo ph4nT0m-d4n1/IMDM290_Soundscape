@@ -14,6 +14,16 @@ import mne
 from pynput import keyboard
 from pythonosc import udp_client
 
+from pythonosc.dispatcher import Dispatcher
+from pythonosc import osc_server
+from threading import Thread
+
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+import listener as ls
+
 start_time = datetime.now()
 
 BUFFER_SIZE = 256*3 
@@ -55,7 +65,7 @@ def main():
     data_buffer = deque(maxlen=BUFFER_SIZE)
     analysis_interval = BUFFER_SIZE // 2
 
-    while True:
+    while ls_server.running:
         sample, timestamp1 = inlets[0].pull_sample()
 
         if any (el < 10 for el in sample):
@@ -106,7 +116,7 @@ def analyze_data(data_combined, channel_names, start_time):
 def get_power(signal):
     magnitudes = np.abs(signal)
     return float(np.sqrt(np.mean(magnitudes ** 2)))
-
+            
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -115,10 +125,15 @@ if __name__ == "__main__":
     parser.add_argument("--folderpath", type=str, default="", help="The folder where to save the trial results.")
     args = parser.parse_args()
 
-    # HARDCODED_MAIN_RESULTS_PATH = "User-study"
-    # result_folder_path = os.path.join(HARDCODED_MAIN_RESULTS_PATH,args.folderpath)
-    # os.makedirs(result_folder_path,exist_ok=True)
+    ls_server = ls.OSC_Server("/bandOSC_exit", 5006)
 
-    client = udp_client.SimpleUDPClient(args.ip, args.port)
+    try:
+        ls_server.run()
+        client = udp_client.SimpleUDPClient(args.ip, args.port)
+        main()
+    except ls.ShutdownException as e:  # catch the custom exception
+        print(e)  # print the exception message
+    finally:
+        cleanup_function()
     
-    main()
+    sys.exit(0)  # ensure the script exits cleanly

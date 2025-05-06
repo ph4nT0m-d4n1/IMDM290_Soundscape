@@ -7,8 +7,13 @@
 This script enumerates Emotiv devices and starts a thread for each device to handle its data stream."""
 from threading import Thread
 from emotiv_lsl.emotiv_epoc_x import EmotivEpocX
+
+from pythonosc.dispatcher import Dispatcher
+from pythonosc import osc_server
+
 import hid
 import sys
+
 import listener as ls
 
 def start_device_stream(device_path):
@@ -19,21 +24,29 @@ def start_device_stream(device_path):
     except Exception as e:
         print(f"Error starting device stream for path {device_path}: {e}")
 
+
 if __name__ == "__main__":
     emotiv_devices = [device for device in hid.enumerate() if device['manufacturer_string'] == 'Emotiv' and device['usage'] == 2]
 
-    threads = []
-    for device in emotiv_devices:
-        device_path = device['path']
-        print(f"Starting thread for device: {device_path}")
-        thread = Thread(target=start_device_stream, args=(device_path,))
-        threads.append(thread)
-        thread.start()
+    ls_server = ls.OSC_Server("/main_exit")
     
-    for thread in threads:
-        thread.join()
+    try:
+        ls_server.run()
         
-    exit = 0
+        threads = []
+        for device in emotiv_devices:
+            device_path = device['path']
+            print(f"Starting thread for device: {device_path}")
+            thread = Thread(target=start_device_stream, args=(device_path,))
+            threads.append(thread)
+            thread.start()
     
-    if exit == 1:
-        sys.exit(0)
+        for thread in threads:
+            thread.join()
+    except ls.ShutdownException as e:  # catch the custom exception
+        print(e)  # print the exception message
+    finally:
+        for thread in threads:
+            thread.join()
+        
+    sys.exit(0)  # ensure the script exits cleanly
