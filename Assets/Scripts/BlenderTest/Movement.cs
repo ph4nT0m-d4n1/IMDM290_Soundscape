@@ -2,39 +2,56 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float radius = 20f;              // Max distance from camera
-    public float speed = 1f;               // Oscillation speed
-    public float angleOffset = 90f;         // Angle around the camera (in degrees)
+    private float radius;                // Orbit radius
+    public float orbitSpeed = 100f;           // Degrees per second
+    public float verticalAmplitude = 1f;    // Height of sine wave
+    public float verticalFrequency = 1f;     //Speed of sine wave
 
-    private Vector3 directionFromCamera;
-    private Vector3 cameraPosition;
-    private float timeOffset;
+    private Vector3 orbitAxis = Vector3.up;  // Axis to orbit around (Y by default)
+    private float currentAngle;
+    private Vector3 orbitCenter;
+    private float timeCounter = 0f;
 
     void Start()
     {
-        // Get camera's position
-        cameraPosition = Camera.main.transform.position;
+        orbitCenter = Camera.main.transform.position;
 
-        // Compute angle in radians
-        float angleRad = angleOffset * Mathf.Deg2Rad;
+        Vector3 toObject = transform.position - orbitCenter;
+        toObject.y = 0f;
 
-        // Use camera's right and forward to define a horizontal plane
-        Vector3 right = Camera.main.transform.right;
-        Vector3 forward = Vector3.Cross(Vector3.up, right).normalized;
+        currentAngle = Mathf.Atan2(toObject.z, toObject.x) * Mathf.Rad2Deg;
 
-        // Get a point on the circle's perimeter relative to camera
-        directionFromCamera = (right * Mathf.Cos(angleRad) + forward * Mathf.Sin(angleRad)).normalized;
+        radius = toObject.magnitude;
 
-        timeOffset = Random.Range(0f, 100f); // Optional variety
+        UpdatePosition(); // Set initial position
     }
 
     void Update()
     {
-        float t = LerpFraction((Time.time + timeOffset) * speed);
-        transform.position = cameraPosition + directionFromCamera * radius * t;
+        orbitCenter = Camera.main.transform.position; // Update if camera moves
+        currentAngle += orbitSpeed * Time.deltaTime;
+        timeCounter += Time.deltaTime;
+        UpdatePosition();
     }
-    float LerpFraction(float time)
+
+    void UpdatePosition()
     {
-        return 0.5f * (1 + Mathf.Sin(time)); // Alternates smoothly from 0 to 1 and back
+        // Calculate direction vector based on current angle
+        float rad = currentAngle * Mathf.Deg2Rad;
+        Vector3 offset = new Vector3(Mathf.Cos(rad), 0f, Mathf.Sin(rad)) * radius;
+
+        float verticalOffset = Mathf.Sin(timeCounter * verticalFrequency * Mathf.PI * 2f) * verticalAmplitude;
+
+        // Align the orbit to the camera's horizontal plane
+        Vector3 forward = Camera.main.transform.forward;
+        forward.y = 0f;
+        forward.Normalize();
+        Vector3 right = Camera.main.transform.right;
+
+        // Convert offset to world space relative to camera
+        Vector3 worldOffset = right * offset.x + forward * offset.z;
+
+        Vector3 finalPosition = orbitCenter + worldOffset + new Vector3(0f, verticalOffset, 0f);
+        transform.position = finalPosition;
     }
 }
