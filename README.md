@@ -7,7 +7,7 @@
 - EEG Integration: (WIP)
 - Dynamic Visuals: (WIP)
 - Guided Questions: Users progress through a series of prompts and questions about their current emotional state, responding on a scale of 1-10.
-- Adaptive Audio: The system activates different audio elements based on user responses, with three intensity levels (low, mid, high) for each emotional dimension.
+- Adaptive Audio: The system activates different audio elements based on user responses, with five intensity levels (super low, low, mid, high, super high) for each emotional dimension.
 - Unique Sound Environment: Multiple audio layers combine to create a unique soundscape tailored to the user's emotional profile.
 
 ## Dependencies
