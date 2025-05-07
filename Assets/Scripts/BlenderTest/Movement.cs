@@ -21,7 +21,7 @@ public class Movement : MonoBehaviour
 
         currentAngle = Mathf.Atan2(toObject.z, toObject.x) * Mathf.Rad2Deg;
 
-        radius = toObject.magnitude;
+        radius = toObject.magnitude + 0.25f;
 
         UpdatePosition(); // Set initial position
     }

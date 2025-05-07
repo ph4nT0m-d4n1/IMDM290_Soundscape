@@ -872,7 +872,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -1029,8 +1029,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4291085509
+  m_fontColor: {r: 0.7735849, g: 0.7699359, b: 0.7699359, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1047,8 +1047,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 19
+  m_fontSizeBase: 19
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -4741,7 +4741,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 377835631865979511, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 583794243}
+      addedObject: {fileID: 583794247}
+    - targetCorrespondingSourceObject: {fileID: 377835631865979511, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 583794248}
+    - targetCorrespondingSourceObject: {fileID: 377835631865979511, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 583794250}
+    - targetCorrespondingSourceObject: {fileID: 377835631865979511, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 583794249}
   m_SourcePrefab: {fileID: 100100000, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
 --- !u!4 &583794241 stripped
 Transform:
@@ -4753,8 +4762,8 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 377835631865979511, guid: f739f278f01134a6896f909ca54f2ec0, type: 3}
   m_PrefabInstance: {fileID: 583794240}
   m_PrefabAsset: {fileID: 0}
---- !u!135 &583794243
-SphereCollider:
+--- !u!65 &583794247
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -4770,10 +4779,73 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.0099
-  m_Center: {x: 0, y: -1.7912776e-17, z: -0.0009}
+  m_Size: {x: 0, y: 0.019999996, z: 0.018241068}
+  m_Center: {x: 0.0065, y: -1.1515022e-17, z: 0.0025209994}
+--- !u!65 &583794248
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583794242}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0, y: 0.019999996, z: 0.018241068}
+  m_Center: {x: -0.0065, y: -1.1515022e-17, z: 0.0025209994}
+--- !u!65 &583794249
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583794242}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02, y: 0, z: 0.018241068}
+  m_Center: {x: 0, y: -0.0065, z: 0.0025209994}
+--- !u!65 &583794250
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583794242}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.02, y: 0, z: 0.018241068}
+  m_Center: {x: 0, y: 0.0065, z: 0.0025209994}
 --- !u!1 &593862346
 GameObject:
   m_ObjectHideFlags: 0
@@ -5220,36 +5292,36 @@ MonoBehaviour:
     brainwaveType: 0
     thresholdValue: 5
     lowStateColor: {r: 0, g: 0, b: 0, a: 0}
-    lowStateIntensity: 0.5
+    lowStateIntensity: 20
     highStateColor: {r: 0, g: 0, b: 0, a: 0}
-    highStateIntensity: 10
+    highStateIntensity: 50
     transitionBuffer: 0
     usePresetColors: 1
   - light: {fileID: 1808123670}
     brainwaveType: 1
     thresholdValue: 5
     lowStateColor: {r: 0, g: 0, b: 0, a: 0}
-    lowStateIntensity: 0.5
+    lowStateIntensity: 20
     highStateColor: {r: 0, g: 0, b: 0, a: 0}
-    highStateIntensity: 10
+    highStateIntensity: 50
     transitionBuffer: 1
     usePresetColors: 1
   - light: {fileID: 1464183307}
     brainwaveType: 2
     thresholdValue: 5
     lowStateColor: {r: 0, g: 0, b: 0, a: 0}
-    lowStateIntensity: 0.5
+    lowStateIntensity: 20
     highStateColor: {r: 0, g: 0, b: 0, a: 0}
-    highStateIntensity: 10
+    highStateIntensity: 50
     transitionBuffer: 1
     usePresetColors: 1
   - light: {fileID: 2134244836}
     brainwaveType: 3
     thresholdValue: 5
     lowStateColor: {r: 0, g: 0, b: 0, a: 0}
-    lowStateIntensity: 0.5
+    lowStateIntensity: 20
     highStateColor: {r: 0, g: 0, b: 0, a: 0}
-    highStateIntensity: 10
+    highStateIntensity: 50
     transitionBuffer: 1
     usePresetColors: 1
   useSmoothing: 1
@@ -5263,7 +5335,7 @@ Transform:
   m_GameObject: {fileID: 771265406}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8.5, z: 0}
+  m_LocalPosition: {x: 0, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6295,8 +6367,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c35b90893bd69ef4f93ca1e2d9ef03b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pythonPath: Python
-  isPythonInPath: 1
+  pythonPath: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+  isPythonInPath: 0
   mainScript: Assets/IMD_EEG/main.py
   secondaryScript: Assets/IMD_EEG/tools/band-OSC.py
 --- !u!114 &957239022
@@ -6440,15 +6512,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.87
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.63
+      value: -2.95
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6706358434145208169, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6481,6 +6553,14 @@ PrefabInstance:
     - target: {fileID: 7522420479347556524, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
       propertyPath: m_Name
       value: 2D_UI_Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833588078093359390, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
+      propertyPath: m_fontSize
+      value: 38
+      objectReference: {fileID: 0}
+    - target: {fileID: 8833588078093359390, guid: 6ff92de13f6218f4485f25c53f998155, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 38
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6720,7 +6800,6 @@ GameObject:
   - component: {fileID: 1090793695}
   - component: {fileID: 1090793694}
   - component: {fileID: 1090793693}
-  - component: {fileID: 1090793692}
   - component: {fileID: 1090793691}
   - component: {fileID: 1090793690}
   m_Layer: 0
@@ -6840,18 +6919,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1090793692
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090793689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba811065219fcbb468bc835f6f82a2c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!143 &1090793693
 CharacterController:
   m_ObjectHideFlags: 0
@@ -6890,7 +6957,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1090793693}
-  speed: 12
+  speed: 10
   gravity: -19.62
   jumpHeight: 3
   groundCheck: {fileID: 1888669651}
@@ -6910,7 +6977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d5226763b7b94488aa0d24512b41b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 100
+  mouseSensitivity: 125
 --- !u!4 &1090793696
 Transform:
   m_ObjectHideFlags: 0
@@ -9526,7 +9593,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -11894,7 +11961,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -14215,7 +14282,7 @@ Light:
   m_Type: 2
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
-  m_Range: 10
+  m_Range: 15
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10

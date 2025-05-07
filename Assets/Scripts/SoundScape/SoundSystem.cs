@@ -39,8 +39,7 @@ public class SoundSystem : MonoBehaviour
         // syncs every AudioSource in followers with leader
         foreach (AudioSource i in followers)
         {
-            i.timeSamples = leader.timeSamples;
-            
+            i.timeSamples = leader.timeSamples; // this sometimes causes an error 
         }
     }
 

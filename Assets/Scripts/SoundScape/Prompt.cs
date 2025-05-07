@@ -24,7 +24,8 @@ public class Prompt : MonoBehaviour
     static TMP_Text promptText; //prompt text being displayed
     static TMP_Text F_next; //suggestive text for user input
     static bool skip; //indicates whether the current question is being skipped
-    static bool startFade; //determines when to run the fadeText animation coroutine
+    static bool startPromptFade; //determines when to run the fadePromptText animation coroutine
+    static bool startNextFade; //determines when to run the fadeNextText animation coroutine
     static bool userInput; //determines whether the user can provide input at the moment
 
     [Header("RunPy")]
@@ -38,7 +39,6 @@ public class Prompt : MonoBehaviour
     bool hasTriggeredShutdown = false;
 
     string ipAddress = "127.0.0.1";
-
 
     #endregion
 
@@ -54,7 +54,7 @@ public class Prompt : MonoBehaviour
         "Please answer each question to the best of your ability on a scale of 1 - 10.", //2
         "Use the number row on your keyboard to provide responses.", //3
         "The number 0 will be used for the value of 10.", //4
-        "The X Key can be used to skip questions.", //5
+        "The F Key can be used to skip questions.", //5
         "When you are ready, we will begin...", //6
 
         "How clear is your mind at this moment?", //Q1 - Vinyl SFX
@@ -73,18 +73,19 @@ public class Prompt : MonoBehaviour
         "Enjoy the sound and sight of You.", //19
         "You may use WASD to move around the space.", //20
         "You may use the mouse to look around.", //21
-        "You may use the spacebar to jump.", //22
-        "When you are done, press Q to quit the EEG process" //23
+        "When you are done, press Q to stop the EEG processing", //22
+        "" //23
     };
 
     #endregion
 
+    #region unity methods
     void Awake()
     {
         // reset counter and skip values
         counter = 0;
         skip = false;
-        startFade = false;
+        startPromptFade = false;
         userInput = true; // allow user input at the start
 
         // initialize prompt system
@@ -99,7 +100,7 @@ public class Prompt : MonoBehaviour
     void Start()
     {
         // set initial prompt text and suggestive text
-        F_next.text = "Press F to continue..."; // set initial suggestive text
+        F_next.text = "Press Space to continue..."; // set initial suggestive text
         promptText.text = prompts[counter];
 
         Debug.Log(prompts.Length);
@@ -113,9 +114,8 @@ public class Prompt : MonoBehaviour
     {
         if (userInput == true)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-
                 if (counter < prompts.Length - 1)
                 {
                     NextPrompt(); // move to the next prompt
@@ -123,8 +123,13 @@ public class Prompt : MonoBehaviour
                 else
                 {
                     Debug.Log("End of prompts reached.");
-                    promptText.text = ""; // clear prompt text
-                    F_next.text = ""; // clear suggestive text
+                    
+                    startNextFade = true;
+                    if (counter == 7 && startNextFade == true)
+                    {
+                        StartCoroutine(FadeNextText("")); // clear suggestive text
+                        startNextFade = false;
+                    }
                 }
             }
 
@@ -132,27 +137,38 @@ public class Prompt : MonoBehaviour
             if (counter > 6 && counter < 17)
             {
                 // nextButton.SetActive(false); // hide next button during interactive questions
-                F_next.text = ""; // clear suggestive text
+
+                startNextFade = true;
+                if (counter > 6 && counter < 8 && startNextFade == true)
+                {
+                    StartCoroutine(FadeNextText("")); // clear suggestive text
+                    startNextFade = false;
+                }
                 
                 // check for skipping or answering questions
                 SkipQuestion();
                 AnswerQuestion();
             }
-            else
+            else if (counter == 17)
             {
                 // nextButton.SetActive(true); // show next button during instructions
-                F_next.text = "Press F to continue..."; // reset suggestive text
+                startNextFade = true;
+                if (startNextFade == true)
+                {
+                    StartCoroutine(FadeNextText("Press Space to Continue...")); // clear suggestive text
+                    startNextFade = false;
+                }
+
             }
-            
-            if (startFade == true)
-            {
-                StartCoroutine(FadeText(prompts[counter]));
-                startFade = false;
-            }
-            
+            if (startPromptFade == true)
+                {
+                    StartCoroutine(FadePromptText(prompts[counter]));
+                    startPromptFade = false;
+                }
         }
 
-        if (counter == 19 && !hasTriggeredShutdown) // check if the last prompt is reached
+        // OSC shutdown message
+        if (counter > 22 && !hasTriggeredShutdown) // check if the last prompt is reached
         {
             if (Input.GetKeyDown(KeyCode.Q)) // allow user to quit python processes
             {
@@ -173,6 +189,7 @@ public class Prompt : MonoBehaviour
         }
     }
 
+    #endregion
 
     #region main methods
     /// <summary>
@@ -185,7 +202,7 @@ public class Prompt : MonoBehaviour
         {
             // set prompt text and log debug information
             // initialize text fade effect
-            startFade = true;
+            startPromptFade = true;
 
             Debug.Log("Current Prompt: " + counter);
             Debug.Log("Responses: " + string.Join(",", responses));
@@ -217,7 +234,7 @@ public class Prompt : MonoBehaviour
     /// </summary>
     static void SkipQuestion()
     {
-        if (Input.GetKeyDown(KeyCode.X)) // initiate skip process when 'F' is pressed
+        if (Input.GetKeyDown(KeyCode.F)) // initiate skip process when 'F' is pressed
         {
             promptText.text = "Are you sure you wish to proceed? (Y / N)_";
             skip = true;
@@ -273,12 +290,12 @@ public class Prompt : MonoBehaviour
 
     #endregion
 
-    #region coroutine method
+    #region coroutine methods
     /// <summary>
     /// Coroutine to fade the prompt text in and out.
     /// Fades out the current text, updates it, and fades it back in.   
     /// </summary>
-    public static IEnumerator FadeText(string nextText)
+    public static IEnumerator FadePromptText(string nextText)
     {
         userInput = false; // disable user input during fade
 
@@ -287,7 +304,7 @@ public class Prompt : MonoBehaviour
 
         while(alpha > 0.0f)
         {
-            alpha -= Time.deltaTime / (fadeTime * 0.75f) ; 
+            alpha -= Time.deltaTime / (fadeTime * 0.80f); 
             promptText.color = new Color(promptText.color.r, promptText.color.g, promptText.color.b, alpha);
             yield return null;
         }
@@ -295,14 +312,37 @@ public class Prompt : MonoBehaviour
         promptText.text = nextText;
 
         yield return new WaitForSeconds(0.5f);
+        
         while(alpha < 1.0f)
         {
-            alpha += Time.deltaTime / (fadeTime * 2f) ;
+            alpha += Time.deltaTime / (fadeTime * 1f);
             promptText.color = new Color(promptText.color.r, promptText.color.g, promptText.color.b, alpha);
             yield return null;
         }
 
         userInput = true; // re-enable user input after fade
+    }
+
+    public static IEnumerator FadeNextText(string nextText)
+    {
+        float alpha = 1f;
+        float fadeTime = 2f; // duration of the fade effect in seconds
+
+        while (alpha > 0.0f)
+        {
+            alpha -= Time.deltaTime / (fadeTime * 0.75f);
+            F_next.color = new Color(F_next.color.r, F_next.color.g, F_next.color.b, alpha);
+            yield return null;
+        }
+
+        F_next.text = nextText;
+
+        while (alpha < 1.0f)
+        {
+            alpha += Time.deltaTime / (fadeTime * 1.25f);
+            F_next.color = new Color(F_next.color.r, F_next.color.g, F_next.color.b, alpha);
+            yield return null;
+        }
     }
 
     #endregion
