@@ -134,7 +134,7 @@ public class Prompt : MonoBehaviour
             }
 
             // special handling for interactive questions (after initial instructions)
-            if (counter > 6 && counter < 17)
+            if (counter > 6 && counter < 17 || counter == 23)
             {
                 // nextButton.SetActive(false); // hide next button during interactive questions
 
@@ -168,7 +168,7 @@ public class Prompt : MonoBehaviour
         }
 
         // OSC shutdown message
-        if (counter > 22 && !hasTriggeredShutdown) // check if the last prompt is reached
+        if (!hasTriggeredShutdown) // check if the last prompt is reached
         {
             if (Input.GetKeyDown(KeyCode.Q)) // allow user to quit python processes
             {
