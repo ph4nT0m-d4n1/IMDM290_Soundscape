@@ -23,9 +23,11 @@ public class Prompt : MonoBehaviour
 
     static TMP_Text promptText; //prompt text being displayed
     static TMP_Text F_next; //suggestive text for user input
+    static UnityEngine.UI.Image background; //black background for UI canvas
     static bool skip; //indicates whether the current question is being skipped
     static bool startPromptFade; //determines when to run the fadePromptText animation coroutine
     static bool startNextFade; //determines when to run the fadeNextText animation coroutine
+    static bool startBackgroundFade; //determines when to run the fadeOutBackground animation coroutine
     static bool userInput; //determines whether the user can provide input at the moment
 
     [Header("RunPy")]
@@ -91,6 +93,7 @@ public class Prompt : MonoBehaviour
         // initialize prompt system
         promptText = GameObject.Find("Prompt Text").GetComponent<TMP_Text>();
         F_next = GameObject.Find("F Next").GetComponent<TMP_Text>();
+        background = GameObject.Find("Background").GetComponent<UnityEngine.UI.Image>();
         
         // nextButton.SetActive(true); // ensure next button is visible at the start
 
@@ -139,6 +142,7 @@ public class Prompt : MonoBehaviour
                 // nextButton.SetActive(false); // hide next button during interactive questions
 
                 startNextFade = true;
+                startBackgroundFade = true;
                 if (counter > 6 && counter < 8 && startNextFade == true)
                 {
                     StartCoroutine(FadeNextText("")); // clear suggestive text
@@ -155,16 +159,31 @@ public class Prompt : MonoBehaviour
                 startNextFade = true;
                 if (startNextFade == true)
                 {
-                    StartCoroutine(FadeNextText("Press Space to Continue...")); // clear suggestive text
+                    StartCoroutine(FadeNextText("Press Space to Continue...")); // bring back suggestive text
                     startNextFade = false;
                 }
-
             }
-            if (startPromptFade == true)
+            else if (counter == 22)
+            {
+                startNextFade = true;
+                if (startNextFade == true)
                 {
-                    StartCoroutine(FadePromptText(prompts[counter]));
-                    startPromptFade = false;
+                    StartCoroutine(FadeNextText("")); // clear suggestive text
+                    startNextFade = false;
                 }
+            }
+
+            if (startPromptFade == true)
+            {
+                StartCoroutine(FadePromptText(prompts[counter]));
+                startPromptFade = false;
+            }
+
+            if (startBackgroundFade == true)
+            {
+                StartCoroutine(FadeOutBackground(background.color.a));
+                startBackgroundFade = false;
+            }
         }
 
         // OSC shutdown message
@@ -300,7 +319,7 @@ public class Prompt : MonoBehaviour
         userInput = false; // disable user input during fade
 
         float alpha = 1f;
-        float fadeTime = 2f; // duration of the fade effect in seconds
+        float fadeTime = 1f; // duration of the fade effect in seconds
 
         while(alpha > 0.0f)
         {
@@ -311,7 +330,15 @@ public class Prompt : MonoBehaviour
 
         promptText.text = nextText;
 
-        yield return new WaitForSeconds(0.5f);
+        if (counter > 6 && counter < 17)
+        {
+            yield return new WaitForSeconds(4f); // longer pause between prompts if the user is being asked questions
+        }
+        else 
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        
         
         while(alpha < 1.0f)
         {
@@ -341,6 +368,24 @@ public class Prompt : MonoBehaviour
         {
             alpha += Time.deltaTime / (fadeTime * 1.25f);
             F_next.color = new Color(F_next.color.r, F_next.color.g, F_next.color.b, alpha);
+            yield return null;
+        }
+    }
+
+    public static IEnumerator FadeOutBackground(float currentAlpha) // decreases the opacity of the canvas background image by 10%
+    {
+        float targetAlpha = 1f - ((counter - 7f)*0.05f);
+        if (counter >= 17)
+        {
+            targetAlpha = 0f;
+        }
+        float newAlpha = currentAlpha;
+        float fadeTime = 20; // duration of the fade effecct in seconds
+
+        while (background.color.a > targetAlpha)
+        {
+            newAlpha -= Time.deltaTime / (fadeTime);
+            background.color = new Color(background.color.r, background.color.g, background.color.b, newAlpha);
             yield return null;
         }
     }
