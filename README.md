@@ -3,6 +3,7 @@
 ## Project Description
   Soundscape is an interactive audio-focused application that aims to adapt to users' emotional states. The application guides users through a series of reflective questions about their current feelings and mental state, then generates a personalized auditory & visual soundscape based on their responses.
 
+<a href="https://drive.google.com/file/d/1UCYNk3H6YpcjgVYLiC3znTXhEIjzkEzL/view?usp=drive_link">Video Documentation</a>
 ## Key Features
 - Dynamic Visuals & EEG Integration: Environmental lighting changes according to real-time EEG data of user's brain waves
 - Guided Questions: Users progress through a series of prompts and questions about their current emotional state, responding on a scale of 1-10.
